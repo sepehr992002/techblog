@@ -1,3 +1,5 @@
 {
-  "helloWorld": "سلام دنیا"
+  "helloWorld": "سلام دنیا",
+  "viewHottestBlogs" : "مشاهده داغ ترین نوشته ها",
+  "viewHottestPodcasts": "مشاهده داغ ترین پادکست ها"
 }

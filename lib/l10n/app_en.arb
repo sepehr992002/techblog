@@ -1,6 +1,6 @@
 {
   "helloWorld": "Hello World!",
-  "@helloWorld": {
-    "description": "The conventional newborn programmer greeting"
-  }
+  "viewHottestBlogs" : "view hottest blogs",
+  "viewHottestPodcasts": "view hottest podcasts"
+
 }
