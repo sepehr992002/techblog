@@ -4,6 +4,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:tech_blog/my_colors.dart';
 import 'package:tech_blog/splash_screen.dart';
 
+import 'gen/assets.gen.dart';
+
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: MyColors.statusBarColor,
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
         locale: Locale(localeCode),
         supportedLocales: AppLocalizations.supportedLocales,
         theme: ThemeData(
-          fontFamily: 'dana',
+          fontFamily: Assets.fonts.danaRegular,
           textTheme: TextTheme(
               bodyMedium: TextStyle(
                   color: Colors.white, fontFamily: 'dana', fontSize: 12)),
