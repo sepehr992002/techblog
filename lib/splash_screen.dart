@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tech_blog/main.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:tech_blog/main_screen.dart';
 import 'package:tech_blog/my_colors.dart';
 import 'gen/assets.gen.dart';
 
@@ -15,11 +16,12 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 3)).then(
+    super.initState();
+    Future.delayed(const Duration(seconds: 1)).then(
       (value) {
-        Navigator.push(context, CupertinoPageRoute(
+        Navigator.pushReplacement(context, CupertinoPageRoute(
           builder: (context) {
-            return MyHomePage();
+            return MainScreen();
           },
         ));
       },
@@ -38,10 +40,8 @@ class _SplashScreenState extends State<SplashScreen> {
               Assets.images.logo.path,
               height: 64,
             ),
-            SpinKitThreeBounce(
-              color: MyColors.primaryColor,
-              size: 23,
-            )
+            SizedBox(height: 34,),
+            SpinKitFadingCube(size: 23,color: MyColors.primaryColor,)
           ],
         ),
       ),

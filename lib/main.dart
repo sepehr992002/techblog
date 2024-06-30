@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:tech_blog/my_colors.dart';
 import 'package:tech_blog/splash_screen.dart';
-import 'gen/assets.gen.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: MyColors.statusBarColor,
+      systemNavigationBarColor: MyColors.systemNavigationBarColor,
+      systemNavigationBarIconBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.dark));
   runApp(const MyApp());
 }
 
@@ -20,12 +22,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         locale: Locale(localeCode),
         supportedLocales: AppLocalizations.supportedLocales,
         theme: ThemeData(
           fontFamily: 'dana',
+          textTheme: TextTheme(
+              bodyMedium: TextStyle(
+                  color: Colors.white, fontFamily: 'dana', fontSize: 12)),
           // This is the theme of your application.
           //
           // TRY THIS: Try running your application with "flutter run". You'll see
