@@ -16,9 +16,13 @@ class MyColors {
 }
 
 class GradientColors {
-  static const List<Color> gradientColors = [
+  static const List<Color> bottomNav = [
     Color.fromARGB(255, 25, 0, 94),
     Color.fromARGB(255, 68, 4, 87)
+  ];
+  static const List<Color> bottomNavBackground = [
+    Color.fromARGB(0, 255, 0, 94),
+    Color.fromARGB(255, 255, 255, 255)
   ];
   static const List<Color> tags = [
     Color.fromARGB(255, 0, 0, 0),

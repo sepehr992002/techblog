@@ -50,6 +50,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/user.png
   AssetGenImage get user => const AssetGenImage('assets/icons/user.png');
 
+  /// File path: assets/icons/write.png
+  AssetGenImage get write => const AssetGenImage('assets/icons/write.png');
+
   /// File path: assets/icons/write_article_icon.png
   AssetGenImage get writeArticleIcon =>
       const AssetGenImage('assets/icons/write_article_icon.png');
@@ -71,6 +74,7 @@ class $AssetsIconsGen {
         home,
         microphon,
         user,
+        write,
         writeArticleIcon,
         writeMicrophone,
         writePodcastIcon
