@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:tech_blog/my_colors.dart';
-import 'package:tech_blog/splash_screen.dart';
+import 'package:tech_blog/view/home_screen.dart';
+import 'package:tech_blog/view/main_screen.dart';
+import 'package:tech_blog/view/profile_screen.dart';
+import 'package:tech_blog/view/splash_screen.dart';
 
 import 'gen/assets.gen.dart';
 
@@ -52,31 +55,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: SplashScreen());
+        home: MainScreen());
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            width: double.infinity,
-            height: 100,
-            decoration: BoxDecoration(color: Colors.red),
-            child: Text(AppLocalizations.of(context)!.viewHottestBlogs),
-          )
-        ],
-      ),
-    );
-  }
-}

@@ -1,5 +1,4 @@
 import 'package:tech_blog/gen/assets.gen.dart';
-
 import 'data_models.dart';
 
 Map homePagePosterMap = {
