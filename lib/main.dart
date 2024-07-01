@@ -5,6 +5,7 @@ import 'package:tech_blog/my_colors.dart';
 import 'package:tech_blog/view/home_screen.dart';
 import 'package:tech_blog/view/main_screen.dart';
 import 'package:tech_blog/view/profile_screen.dart';
+import 'package:tech_blog/view/register_into.dart';
 import 'package:tech_blog/view/splash_screen.dart';
 
 import 'gen/assets.gen.dart';
@@ -33,6 +34,18 @@ class MyApp extends StatelessWidget {
         locale: Locale(localeCode),
         supportedLocales: AppLocalizations.supportedLocales,
         theme: ThemeData(
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ButtonStyle(backgroundColor: WidgetStateProperty.resolveWith((states) {
+                if(states.contains(WidgetState.pressed)){
+                  return Colors.blue;
+                }
+                return MyColors.primaryColor;
+              },),textStyle: WidgetStateProperty.resolveWith((states) {
+                if(states.contains(WidgetState.pressed)){
+                  return TextStyle(fontSize: 25);
+                }
+                return TextStyle(fontSize: 20);
+              },))),
           fontFamily: Assets.fonts.danaRegular,
           textTheme: TextTheme(
               bodyMedium: TextStyle(
@@ -55,7 +68,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: MainScreen());
+        home: RegisterInto());
   }
 }
 
