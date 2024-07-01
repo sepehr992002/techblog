@@ -34,18 +34,28 @@ class MyApp extends StatelessWidget {
         locale: Locale(localeCode),
         supportedLocales: AppLocalizations.supportedLocales,
         theme: ThemeData(
+          inputDecorationTheme: InputDecorationTheme(
+              fillColor: Colors.white,
+              filled: true,
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(12))),
           elevatedButtonTheme: ElevatedButtonThemeData(
-              style: ButtonStyle(backgroundColor: WidgetStateProperty.resolveWith((states) {
-                if(states.contains(WidgetState.pressed)){
-                  return Colors.blue;
-                }
-                return MyColors.primaryColor;
-              },),textStyle: WidgetStateProperty.resolveWith((states) {
-                if(states.contains(WidgetState.pressed)){
-                  return TextStyle(fontSize: 25);
-                }
-                return TextStyle(fontSize: 20);
-              },))),
+              style:
+                  ButtonStyle(backgroundColor: WidgetStateProperty.resolveWith(
+            (states) {
+              if (states.contains(WidgetState.pressed)) {
+                return Colors.blue;
+              }
+              return MyColors.primaryColor;
+            },
+          ), textStyle: WidgetStateProperty.resolveWith(
+            (states) {
+              if (states.contains(WidgetState.pressed)) {
+                return TextStyle(fontSize: 25);
+              }
+              return TextStyle(fontSize: 20);
+            },
+          ))),
           fontFamily: Assets.fonts.danaRegular,
           textTheme: TextTheme(
               bodyMedium: TextStyle(
@@ -71,4 +81,3 @@ class MyApp extends StatelessWidget {
         home: RegisterInto());
   }
 }
-
