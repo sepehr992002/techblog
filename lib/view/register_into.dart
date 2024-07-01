@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:validators/validators.dart';
 import '../gen/assets.gen.dart';
 
 class RegisterInto extends StatelessWidget {
@@ -24,46 +25,54 @@ class RegisterInto extends StatelessWidget {
               'به تک بلاگ خوش اومدی برای ارسال مقاله و پادکست حتما باید ثبت نام کنی'),
           ElevatedButton(
               onPressed: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (context) {
-                    return Container(
-                      height: height / 2,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(16),
-                              topLeft: Radius.circular(16))),
-                      child: Column(
-                        children: [
-                          Text(
-                            "ایمیلت رو وارد کن",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(24),
-                            child: TextField(
-                              onChanged: (value) {
-
-                              },
-                              textAlign: TextAlign.center,
-                              decoration: InputDecoration(
-                                hintText: "techblog@gmail.com",
-                              ),
-                            ),
-                          ),
-                          ElevatedButton(onPressed: () {
-
-                          }, child: Text("ادامه"))
-                        ],
-                      ),
-                    );
-                  },
-                );
+                _showEmailBottomSheet(context, height);
               },
               child: Text("بزن بریم")),
         ],
       ),
+    );
+  }
+  Future<dynamic> _showEmailBottomSheet(BuildContext context,double height){
+    return showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          height: height / 2,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(16),
+                  topLeft: Radius.circular(16))),
+          child: Column(
+            children: [
+              Text(
+                "ایمیلت رو وارد کن",
+                style: TextStyle(color: Colors.black),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(24),
+                child: TextField(
+                  onChanged: (value) {
+                    if(isEmail(value)){
+                      print('email is correct');
+                    }else{
+                      // validator package which includes is email is used to validate strings
+                      print("email is false");
+                    }
+                  },
+                  textAlign: TextAlign.center,
+                  decoration: InputDecoration(
+                    hintText: "techblog@gmail.com",
+                  ),
+                ),
+              ),
+              ElevatedButton(onPressed: () {
+
+              }, child: Text("ادامه"))
+            ],
+          ),
+        );
+      },
     );
   }
 }
