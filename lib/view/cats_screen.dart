@@ -17,6 +17,7 @@ class MyCats extends StatefulWidget {
 class _MyCatsState extends State<MyCats> {
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context).textTheme;
     var size = MediaQuery.of(context).size;
     var bodyMargin = size.width / 10;
     return Scaffold(
@@ -39,14 +40,15 @@ class _MyCatsState extends State<MyCats> {
                 Text(
                   textAlign: TextAlign.center,
                   MyTexts.congrats,
-                  style: TextStyle(color: Colors.black),
+                  style: theme.titleMedium,
                 ),
                 SizedBox(height: 12,),
-                const TextField(
+                 TextField(
                   textAlign: TextAlign.center,
                   decoration: InputDecoration(
                     alignLabelWithHint: true,
                     hintText: MyTexts.nameAndLastName,
+                    hintStyle: theme.headlineMedium
                   ),
                 ),
                 SizedBox(height: 12,),

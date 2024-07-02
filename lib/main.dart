@@ -21,7 +21,7 @@ void main() {
 }
 
 String localeCode = 'fa';
-
+String fontFamily = 'dana';
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -59,6 +59,8 @@ class MyApp extends StatelessWidget {
           ))),
           fontFamily: Assets.fonts.danaRegular,
           textTheme: TextTheme(
+            headlineMedium: TextStyle(color: Colors.grey,fontFamily: fontFamily,fontSize: 12),
+            titleMedium: TextStyle(color: Colors.black,fontFamily: fontFamily,fontSize: 12),
               bodyMedium: TextStyle(
                   color: Colors.white, fontFamily: fontFamily, fontSize: 12)),
           // This is the theme of your application.
