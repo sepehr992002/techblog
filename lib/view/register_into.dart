@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tech_blog/view/my_cats.dart';
+import 'package:tech_blog/view/cats_screen.dart';
 import 'package:validators/validators.dart';
 import '../gen/assets.gen.dart';
+import '../components/my_texts.dart';
 
 class RegisterInto extends StatelessWidget {
   const RegisterInto({super.key});
@@ -23,12 +24,12 @@ class RegisterInto extends StatelessWidget {
           Text(
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.black),
-              'به تک بلاگ خوش اومدی برای ارسال مقاله و پادکست حتما باید ثبت نام کنی'),
+              MyTexts.welcomeMessage),
           ElevatedButton(
               onPressed: () {
                 _showEmailBottomSheet(context, height);
               },
-              child: Text("بزن بریم")),
+              child: Text(MyTexts.letsGo)),
         ],
       ),
     );
@@ -47,7 +48,7 @@ class RegisterInto extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "ایمیلت رو وارد کن",
+                MyTexts.enterYourEmail,
                 style: TextStyle(color: Colors.black),
               ),
               Padding(
@@ -63,14 +64,14 @@ class RegisterInto extends StatelessWidget {
                   },
                   textAlign: TextAlign.center,
                   decoration: InputDecoration(
-                    hintText: "techblog@gmail.com",
+                    hintText: MyTexts.hintEmail,
                   ),
                 ),
               ),
               ElevatedButton(onPressed: () {
                 Navigator.pop(context);
                 _activateCodeBottomSheet(context, height);
-              }, child: Text("ادامه"))
+              }, child: Text(MyTexts.continew))
             ],
           ),
         );
@@ -91,7 +92,7 @@ class RegisterInto extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "کد فعال سازی رو وارد کن",
+                MyTexts.enterActivationCode,
                 style: TextStyle(color: Colors.black),
               ),
               Padding(
@@ -99,10 +100,10 @@ class RegisterInto extends StatelessWidget {
                 child: TextField(
                   onChanged: (value) {
                     if(isEmail(value)){
-                      print('email is correct');
+                      print('activation code is correct');
                     }else{
                       // validator package which includes is email is used to validate strings
-                      print("email is false");
+                      print("activation code is false");
                     }
                   },
                   textAlign: TextAlign.center,
@@ -115,7 +116,7 @@ class RegisterInto extends StatelessWidget {
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
                   return MyCats();
                 },));
-              }, child: Text("ادامه"))
+              }, child: Text(MyTexts.continew))
             ],
           ),
         );

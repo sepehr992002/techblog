@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../fake_data.dart';
+import 'package:tech_blog/components/my_texts.dart';
+import '../components/fake_data.dart';
 import '../gen/assets.gen.dart';
-import '../my_colors.dart';
+import '../components/my_colors.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -28,17 +29,17 @@ class ProfileScreen extends StatelessWidget {
                 width: 20,
                 height: 20,
               ),
-              Text("ویرایش عکس پروفایل",style: TextStyle(color: Colors.blue),),
+              Text(MyTexts.editProfilePic,style: TextStyle(color: Colors.blue),),
             ],
           ),
-          Text("فاطمه امیری",style: TextStyle(color: Colors.black),),
-          Text('fatemeamiri@gmail.com',style: TextStyle(color: Colors.black),),
+          Text(MyTexts.nameExample,style: TextStyle(color: Colors.black),),
+          Text(MyTexts.email,style: TextStyle(color: Colors.black),),
           Divider(indent: 32,endIndent: 32,),
-          Text('my favorite blogs',style: TextStyle(color: Colors.black),),
+          Text(MyTexts.favoriteBlogs,style: TextStyle(color: Colors.black),),
           Divider(indent: 32,endIndent: 32,),
-          Text('my favorite podcasts',style: TextStyle(color: Colors.black),),
+          Text(MyTexts.favoritePodcasts,style: TextStyle(color: Colors.black),),
           Divider(indent: 32,endIndent: 32,),
-          Text('exit account',style: TextStyle(color: Colors.black),),
+          Text(MyTexts.exitAccount,style: TextStyle(color: Colors.black),),
         ],
       ),
     );

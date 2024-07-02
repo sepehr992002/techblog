@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../fake_data.dart';
+import 'package:tech_blog/components/my_texts.dart';
+import '../components/fake_data.dart';
 import '../gen/assets.gen.dart';
-import '../my_colors.dart';
+import '../components/my_colors.dart';
 
-class HomeScreen extends StatelessWidget{
+class HomeScreen extends StatelessWidget {
   final double bodyMargin;
 
-  const HomeScreen({super.key,required this.bodyMargin});
+  const HomeScreen({super.key, required this.bodyMargin});
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +26,7 @@ class HomeScreen extends StatelessWidget{
                     borderRadius: BorderRadius.circular(16),
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage(
-                            homePagePosterMap["imageAsset"]))),
+                        image: AssetImage(homePagePosterMap["imageAsset"]))),
               ),
               Container(
                 width: width / 1.25,
@@ -36,8 +36,7 @@ class HomeScreen extends StatelessWidget{
                     gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
-                        colors:
-                        GradientColors.homePosterCoverGradient)),
+                        colors: GradientColors.homePosterCoverGradient)),
               ),
               Positioned(
                   bottom: 8,
@@ -47,23 +46,19 @@ class HomeScreen extends StatelessWidget{
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Row(
-                        mainAxisAlignment:
-                        MainAxisAlignment.spaceAround,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Text(
                             homePagePosterMap['writer'] +
                                 '_' +
                                 homePagePosterMap['date'],
-                            style:
-                            Theme.of(context).textTheme.bodyMedium,
+                            style: Theme.of(context).textTheme.bodyMedium,
                           ),
                           Row(
                             children: [
                               Text(
                                 homePagePosterMap['view'],
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium,
+                                style: Theme.of(context).textTheme.bodyMedium,
                               ),
                               SizedBox(
                                 width: 8,
@@ -97,7 +92,7 @@ class HomeScreen extends StatelessWidget{
                 return Padding(
                   padding: EdgeInsets.fromLTRB(
                       0, 8, index == 0 ? bodyMargin : 15, 8),
-                  child:MainTags(index: index),
+                  child: MainTags(index: index),
                 );
               },
             ),
@@ -119,7 +114,7 @@ class HomeScreen extends StatelessWidget{
                   width: 4,
                 ),
                 Text(
-                  AppLocalizations.of(context)!.viewHottestBlogs,
+                  MyTexts.viewHottestBlogs,
                   style: TextStyle(color: Colors.blue),
                 )
               ],
@@ -132,8 +127,7 @@ class HomeScreen extends StatelessWidget{
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: EdgeInsets.only(
-                      right: index == 0 ? bodyMargin : 15),
+                  padding: EdgeInsets.only(right: index == 0 ? bodyMargin : 15),
                   child: Column(
                     children: [
                       SizedBox(
@@ -143,15 +137,13 @@ class HomeScreen extends StatelessWidget{
                           children: [
                             Container(
                               foregroundDecoration: BoxDecoration(
-                                  borderRadius:
-                                  BorderRadius.circular(16),
+                                  borderRadius: BorderRadius.circular(16),
                                   image: DecorationImage(
                                       image: NetworkImage(
                                           blogList[index].imageUrl),
                                       fit: BoxFit.cover)),
                               decoration: BoxDecoration(
-                                  borderRadius:
-                                  BorderRadius.circular(16),
+                                  borderRadius: BorderRadius.circular(16),
                                   gradient: LinearGradient(
                                       begin: Alignment.bottomCenter,
                                       end: Alignment.topCenter,
@@ -163,7 +155,7 @@ class HomeScreen extends StatelessWidget{
                                 right: 0,
                                 child: Row(
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceAround,
+                                      MainAxisAlignment.spaceAround,
                                   children: [
                                     Text(
                                       blogList[index].writer,
@@ -222,7 +214,7 @@ class HomeScreen extends StatelessWidget{
                   width: 4,
                 ),
                 Text(
-                  AppLocalizations.of(context)!.viewHottestPodcasts,
+                  MyTexts.viewHottestPodcasts,
                   style: TextStyle(color: Colors.blue),
                 )
               ],
@@ -235,8 +227,7 @@ class HomeScreen extends StatelessWidget{
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: EdgeInsets.only(
-                      right: index == 0 ? bodyMargin : 15),
+                  padding: EdgeInsets.only(right: index == 0 ? bodyMargin : 15),
                   child: Column(
                     children: [
                       SizedBox(
@@ -246,15 +237,13 @@ class HomeScreen extends StatelessWidget{
                           children: [
                             Container(
                               foregroundDecoration: BoxDecoration(
-                                  borderRadius:
-                                  BorderRadius.circular(16),
+                                  borderRadius: BorderRadius.circular(16),
                                   image: DecorationImage(
                                       image: NetworkImage(
                                           blogList[index].imageUrl),
                                       fit: BoxFit.cover)),
                               decoration: BoxDecoration(
-                                  borderRadius:
-                                  BorderRadius.circular(16),
+                                  borderRadius: BorderRadius.circular(16),
                                   gradient: LinearGradient(
                                       begin: Alignment.bottomCenter,
                                       end: Alignment.topCenter,
@@ -266,7 +255,7 @@ class HomeScreen extends StatelessWidget{
                                 right: 0,
                                 child: Row(
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceAround,
+                                      MainAxisAlignment.spaceAround,
                                   children: [
                                     Text(
                                       blogList[index].writer,
@@ -311,18 +300,19 @@ class HomeScreen extends StatelessWidget{
               },
             ),
           ),
-          SizedBox(height: 60,)
+          SizedBox(
+            height: 60,
+          )
         ],
       ),
     );
   }
 }
 
-
-
-class MainTags extends StatelessWidget{
+class MainTags extends StatelessWidget {
   final int index;
-  const MainTags({super.key,required this.index});
+
+  const MainTags({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -351,8 +341,7 @@ class MainTags extends StatelessWidget{
             ),
             Text(
               tagList[index].title,
-              style:
-              Theme.of(context).textTheme.bodyMedium,
+              style: Theme.of(context).textTheme.bodyMedium,
             )
           ],
         ),

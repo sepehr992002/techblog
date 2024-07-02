@@ -1,5 +1,5 @@
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'data_models.dart';
+import '../data_models.dart';
 
 Map homePagePosterMap = {
   "imageAsset": Assets.images.posterTest.path,

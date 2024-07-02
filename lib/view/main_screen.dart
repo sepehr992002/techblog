@@ -1,8 +1,9 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:tech_blog/fake_data.dart';
+import 'package:tech_blog/components/fake_data.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/my_colors.dart';
+import 'package:tech_blog/components/my_colors.dart';
+import 'package:tech_blog/components/my_texts.dart';
 import 'package:tech_blog/view/profile_screen.dart';
 import 'home_screen.dart';
 
@@ -38,22 +39,22 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               )),
               ListTile(
-                title: Text('پروفایل کاربری'),
+                title: Text(MyTexts.profile),
                 onTap: () {},
               ),
               Divider(color: MyColors.dividerColor,),
               ListTile(
-                title: Text('درباره تک بلاگ'),
+                title: Text(MyTexts.aboutTechBlog),
                 onTap: () {},
               ),
               Divider(color: MyColors.dividerColor,),
               ListTile(
-                title: Text('اشتراک گذاری'),
+                title: Text(MyTexts.share),
                 onTap: () {},
               ),
               Divider(color: MyColors.dividerColor,),
               ListTile(
-                title: Text('تک بلاگ در گیت هاب'),
+                title: Text(MyTexts.techBlogInGithub),
                 onTap: () {},
               ),
               Divider(color: MyColors.dividerColor,)

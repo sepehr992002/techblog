@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tech_blog/fake_data.dart';
+import 'package:tech_blog/components/fake_data.dart';
 import 'package:tech_blog/view/home_screen.dart';
-
 import '../gen/assets.gen.dart';
-import '../my_colors.dart';
+import '../components/my_colors.dart';
+import '../components/my_texts.dart';
 
 class MyCats extends StatefulWidget {
   const MyCats({super.key});
@@ -21,7 +21,7 @@ class _MyCatsState extends State<MyCats> {
     var bodyMargin = size.width / 10;
     return Scaffold(
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: EdgeInsets.only(left: bodyMargin, right: bodyMargin),
           child: Center(
@@ -29,26 +29,32 @@ class _MyCatsState extends State<MyCats> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                const SizedBox(height: 32,),
                 SvgPicture.asset(
                   Assets.images.tcbot,
                   height: 100,
                   width: 100,
                 ),
+                SizedBox(height: 24,),
                 Text(
-                  "تبریک میگم ایمیل با موفقیت تایید شد لطفا اطلاعات ثبت نام رو کامل کن",
+                  textAlign: TextAlign.center,
+                  MyTexts.congrats,
                   style: TextStyle(color: Colors.black),
                 ),
+                SizedBox(height: 12,),
                 const TextField(
                   textAlign: TextAlign.center,
                   decoration: InputDecoration(
                     alignLabelWithHint: true,
-                    hintText: "نام و نام خانوادگی",
+                    hintText: MyTexts.nameAndLastName,
                   ),
                 ),
+                SizedBox(height: 12,),
                 Text(
-                  'دسته بندی هایی که دوست داری رو انتخاب کن',
+                  MyTexts.chooseCats,
                   style: TextStyle(color: Colors.black),
                 ),
+                SizedBox(height: 16,),
                 SizedBox(
                   width: double.infinity,
                   height: 100,
@@ -76,6 +82,7 @@ class _MyCatsState extends State<MyCats> {
                     },
                   ),
                 ),
+                SizedBox(height: 12,),
                 Image.asset(
                   Assets.icons.downCatArrow.path,
                   scale: 3,
