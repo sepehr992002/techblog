@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 class MyColors {
   static const titleColor = Color.fromARGB(255, 40, 107, 154);
   static const titleText = Color.fromARGB(255, 0, 0, 0);
@@ -13,6 +15,8 @@ class MyColors {
   static const subText = Color.fromARGB(255, 197, 197, 197);
   static const primaryColor = Color.fromARGB(255, 68, 4, 87);
   static const seeMore = Color.fromARGB(255, 40, 107, 184);
+  static const surface = Color.fromARGB(255, 242, 242, 242);
+  static const dividerColor = Colors.grey;
 }
 
 class GradientColors {

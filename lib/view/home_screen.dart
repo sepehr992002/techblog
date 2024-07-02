@@ -97,38 +97,7 @@ class HomeScreen extends StatelessWidget{
                 return Padding(
                   padding: EdgeInsets.fromLTRB(
                       0, 8, index == 0 ? bodyMargin : 15, 8),
-                  child: Container(
-                    height: 60,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(24),
-                        ),
-                        gradient: LinearGradient(
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                            colors: GradientColors.tags)),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
-                      child: Row(
-                        children: [
-                          Image.asset(
-                            Assets.icons.hashtagicon.path,
-                            color: Colors.white,
-                            width: 16,
-                            height: 16,
-                          ),
-                          SizedBox(
-                            width: 8,
-                          ),
-                          Text(
-                            tagList[index].title,
-                            style:
-                            Theme.of(context).textTheme.bodyMedium,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
+                  child:MainTags(index: index),
                 );
               },
             ),
@@ -344,6 +313,49 @@ class HomeScreen extends StatelessWidget{
           ),
           SizedBox(height: 60,)
         ],
+      ),
+    );
+  }
+}
+
+
+
+class MainTags extends StatelessWidget{
+  final int index;
+  const MainTags({super.key,required this.index});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 60,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(
+            Radius.circular(24),
+          ),
+          gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: GradientColors.tags)),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
+        child: Row(
+          children: [
+            Image.asset(
+              Assets.icons.hashtagicon.path,
+              color: Colors.white,
+              width: 16,
+              height: 16,
+            ),
+            SizedBox(
+              width: 8,
+            ),
+            Text(
+              tagList[index].title,
+              style:
+              Theme.of(context).textTheme.bodyMedium,
+            )
+          ],
+        ),
       ),
     );
   }

@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:tech_blog/my_colors.dart';
 import 'package:tech_blog/view/home_screen.dart';
 import 'package:tech_blog/view/main_screen.dart';
+import 'package:tech_blog/view/my_cats.dart';
 import 'package:tech_blog/view/profile_screen.dart';
 import 'package:tech_blog/view/register_into.dart';
 import 'package:tech_blog/view/splash_screen.dart';
@@ -78,6 +79,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: RegisterInto());
+        home: MyCats());
   }
 }
