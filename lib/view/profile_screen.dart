@@ -18,28 +18,83 @@ class ProfileScreen extends StatelessWidget {
         children: [
           Image.asset(
             Assets.images.profileAvatar.path,
-            width: 60,
-            height: 60,
+            width: 80,
+            height: 80,
+          ),
+          SizedBox(
+            height: 12,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
                 Assets.icons.bluePen.path,
-                width: 20,
-                height: 20,
+                width: 15,
+                height: 15,
               ),
-              Text(MyTexts.editProfilePic,style: TextStyle(color: Colors.blue),),
+              SizedBox(width: 4,),
+              Text(
+                MyTexts.editProfilePic,
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
             ],
           ),
-          Text(MyTexts.nameExample,style: TextStyle(color: Colors.black),),
-          Text(MyTexts.email,style: TextStyle(color: Colors.black),),
-          Divider(indent: 32,endIndent: 32,),
-          Text(MyTexts.favoriteBlogs,style: TextStyle(color: Colors.black),),
-          Divider(indent: 32,endIndent: 32,),
-          Text(MyTexts.favoritePodcasts,style: TextStyle(color: Colors.black),),
-          Divider(indent: 32,endIndent: 32,),
-          Text(MyTexts.exitAccount,style: TextStyle(color: Colors.black),),
+          SizedBox(
+            height: 12,
+          ),
+          Text(
+            MyTexts.nameExample,
+            style: TextStyle(color: Colors.black),
+          ),
+          SizedBox(
+            height: 9,
+          ),
+          Text(
+            MyTexts.email,
+            style: TextStyle(color: Colors.black),
+          ),
+          SizedBox(
+            height: 9,
+          ),
+          Divider(
+            indent: 32,
+            endIndent: 32,
+          ),
+          SizedBox(
+            height: 9,
+          ),
+          Text(
+            MyTexts.favoriteBlogs,
+            style: TextStyle(color: Colors.black),
+          ),
+          SizedBox(
+            height: 9,
+          ),
+          Divider(
+            indent: 32,
+            endIndent: 32,
+          ),
+          SizedBox(
+            height: 9,
+          ),
+          Text(
+            MyTexts.favoritePodcasts,
+            style: TextStyle(color: Colors.black),
+          ),
+          SizedBox(
+            height: 9,
+          ),
+          Divider(
+            indent: 32,
+            endIndent: 32,
+          ),
+          SizedBox(
+            height: 9,
+          ),
+          Text(
+            MyTexts.exitAccount,
+            style: TextStyle(color: Colors.black),
+          ),
         ],
       ),
     );

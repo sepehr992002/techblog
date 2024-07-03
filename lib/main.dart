@@ -59,6 +59,7 @@ class MyApp extends StatelessWidget {
           ))),
           fontFamily: Assets.fonts.danaRegular,
           textTheme: TextTheme(
+            labelLarge: TextStyle(color: MyColors.seeMore,fontFamily: fontFamily,fontSize: 12),
             headlineMedium: TextStyle(color: Colors.grey,fontFamily: fontFamily,fontSize: 12),
             titleMedium: TextStyle(color: Colors.black,fontFamily: fontFamily,fontSize: 12),
               bodyMedium: TextStyle(
@@ -81,6 +82,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: MyCats());
+        home: RegisterInto());
   }
 }

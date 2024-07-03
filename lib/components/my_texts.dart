@@ -2,7 +2,7 @@ class MyTexts{
   static const String congrats = "تبریک میگم ایمیل با موفقیت تایید شد لطفا اطلاعات ثبت نام رو کامل کن";
   static const String nameAndLastName = "نام و نام خانوادگی";
   static const String chooseCats = 'دسته بندی هایی که دوست داری رو انتخاب کن';
-  static const String viewHottestBlogs = "مشاهدخ داغ ترین نوشته ها";
+  static const String viewHottestBlogs = "مشاهده داغ ترین نوشته ها";
   static const String viewHottestPodcasts = 'مشاهده داغ ترین پادکست ها';
   static const String profile = 'پروفایل کاربری';
   static const String aboutTechBlog = 'درباره تک بلاگ';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:tech_blog/components/my_texts.dart';
 import '../components/fake_data.dart';
 import '../gen/assets.gen.dart';
@@ -42,41 +41,44 @@ class HomeScreen extends StatelessWidget {
                   bottom: 8,
                   left: 0,
                   right: 0,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text(
-                            homePagePosterMap['writer'] +
-                                '_' +
-                                homePagePosterMap['date'],
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                homePagePosterMap['view'],
-                                style: Theme.of(context).textTheme.bodyMedium,
-                              ),
-                              SizedBox(
-                                width: 8,
-                              ),
-                              Icon(
-                                Icons.remove_red_eye_sharp,
-                                color: Colors.white,
-                                size: 16,
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                      Text(
-                        homePagePosterMap['title'],
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      )
-                    ],
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(width / 12, 0, width / 12, 0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              homePagePosterMap['writer'] +
+                                  '_' +
+                                  homePagePosterMap['date'],
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  homePagePosterMap['view'],
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                ),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                Icon(
+                                  Icons.remove_red_eye_sharp,
+                                  color: Colors.white,
+                                  size: 16,
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                        Text(
+                          homePagePosterMap['title'],
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        )
+                      ],
+                    ),
                   ))
             ],
           ),
@@ -115,7 +117,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Text(
                   MyTexts.viewHottestBlogs,
-                  style: TextStyle(color: Colors.blue),
+                  style: Theme.of(context).textTheme.labelLarge,
                 )
               ],
             ),
@@ -172,7 +174,7 @@ class HomeScreen extends StatelessWidget {
                                               .bodyMedium,
                                         ),
                                         SizedBox(
-                                          width: 8,
+                                          width: 12,
                                         ),
                                         Icon(
                                           Icons.remove_red_eye_sharp,
@@ -186,14 +188,17 @@ class HomeScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      SizedBox(
-                          width: width / 2.4,
-                          child: Text(
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            blogList[index].title,
-                            style: TextStyle(color: Colors.black),
-                          ))
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8),
+                        child: SizedBox(
+                            width: width / 2.4,
+                            child: Text(
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              blogList[index].title,
+                              style: TextStyle(color: Colors.black),
+                            )),
+                      )
                     ],
                   ),
                 );
@@ -215,7 +220,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Text(
                   MyTexts.viewHottestPodcasts,
-                  style: TextStyle(color: Colors.blue),
+                  style: Theme.of(context).textTheme.labelLarge,
                 )
               ],
             ),
@@ -286,14 +291,17 @@ class HomeScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      SizedBox(
-                          width: width / 2.4,
-                          child: Text(
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            blogList[index].title,
-                            style: TextStyle(color: Colors.black),
-                          ))
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12),
+                        child: SizedBox(
+                            width: width / 2.4,
+                            child: Text(
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              blogList[index].title,
+                              style: TextStyle(color: Colors.black),
+                            )),
+                      )
                     ],
                   ),
                 );

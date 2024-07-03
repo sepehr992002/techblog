@@ -18,23 +18,33 @@ class RegisterInto extends StatelessWidget {
         children: [
           SvgPicture.asset(
             Assets.images.tcbot,
-            height: 60,
-            width: 60,
+            height: 80,
+            width: 80,
+          ),
+          SizedBox(
+            height: 20,
           ),
           Text(
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.black),
+              style: Theme.of(context).textTheme.titleMedium,
               MyTexts.welcomeMessage),
+          SizedBox(
+            height: 20,
+          ),
           ElevatedButton(
               onPressed: () {
                 _showEmailBottomSheet(context, height);
               },
-              child: Text(MyTexts.letsGo)),
+              child: Text(
+                MyTexts.letsGo,
+                style: Theme.of(context).textTheme.bodyMedium,
+              )),
         ],
       ),
     );
   }
-  Future<dynamic> _showEmailBottomSheet(BuildContext context,double height){
+
+  Future<dynamic> _showEmailBottomSheet(BuildContext context, double height) {
     return showModalBottomSheet(
       context: context,
       builder: (context) {
@@ -43,21 +53,23 @@ class RegisterInto extends StatelessWidget {
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(16),
-                  topLeft: Radius.circular(16))),
+                  topRight: Radius.circular(16), topLeft: Radius.circular(16))),
           child: Column(
             children: [
+              SizedBox(
+                height: 12,
+              ),
               Text(
                 MyTexts.enterYourEmail,
-                style: TextStyle(color: Colors.black),
+                style: Theme.of(context).textTheme.titleMedium,
               ),
               Padding(
                 padding: const EdgeInsets.all(24),
                 child: TextField(
                   onChanged: (value) {
-                    if(isEmail(value)){
+                    if (isEmail(value)) {
                       print('email is correct');
-                    }else{
+                    } else {
                       // validator package which includes is email is used to validate strings
                       print("email is false");
                     }
@@ -68,17 +80,24 @@ class RegisterInto extends StatelessWidget {
                   ),
                 ),
               ),
-              ElevatedButton(onPressed: () {
-                Navigator.pop(context);
-                _activateCodeBottomSheet(context, height);
-              }, child: Text(MyTexts.continew))
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    _activateCodeBottomSheet(context, height);
+                  },
+                  child: Text(
+                    MyTexts.continew,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ))
             ],
           ),
         );
       },
     );
   }
-  Future<dynamic> _activateCodeBottomSheet(BuildContext context,double height){
+
+  Future<dynamic> _activateCodeBottomSheet(
+      BuildContext context, double height) {
     return showModalBottomSheet(
       context: context,
       builder: (context) {
@@ -87,21 +106,23 @@ class RegisterInto extends StatelessWidget {
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(16),
-                  topLeft: Radius.circular(16))),
+                  topRight: Radius.circular(16), topLeft: Radius.circular(16))),
           child: Column(
             children: [
+              SizedBox(
+                height: 12,
+              ),
               Text(
                 MyTexts.enterActivationCode,
-                style: TextStyle(color: Colors.black),
+                style: Theme.of(context).textTheme.titleMedium,
               ),
               Padding(
                 padding: const EdgeInsets.all(24),
                 child: TextField(
                   onChanged: (value) {
-                    if(isEmail(value)){
+                    if (isEmail(value)) {
                       print('activation code is correct');
-                    }else{
+                    } else {
                       // validator package which includes is email is used to validate strings
                       print("activation code is false");
                     }
@@ -112,11 +133,18 @@ class RegisterInto extends StatelessWidget {
                   ),
                 ),
               ),
-              ElevatedButton(onPressed: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-                  return MyCats();
-                },));
-              }, child: Text(MyTexts.continew))
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(context, MaterialPageRoute(
+                      builder: (context) {
+                        return MyCats();
+                      },
+                    ));
+                  },
+                  child: Text(
+                    MyTexts.continew,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ))
             ],
           ),
         );

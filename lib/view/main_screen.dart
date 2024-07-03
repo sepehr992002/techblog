@@ -26,6 +26,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer(
+        width: width/1.3,
         backgroundColor: MyColors.scaffoldBg,
         child: Padding(
           padding: EdgeInsets.only(left: bodyMargin, right: bodyMargin),
@@ -39,22 +40,22 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               )),
               ListTile(
-                title: Text(MyTexts.profile),
+                title: Text(MyTexts.profile,style: Theme.of(context).textTheme.titleMedium,),
                 onTap: () {},
               ),
               Divider(color: MyColors.dividerColor,),
               ListTile(
-                title: Text(MyTexts.aboutTechBlog),
+                title: Text(MyTexts.aboutTechBlog,style: Theme.of(context).textTheme.titleMedium),
                 onTap: () {},
               ),
               Divider(color: MyColors.dividerColor,),
               ListTile(
-                title: Text(MyTexts.share),
+                title: Text(MyTexts.share,style: Theme.of(context).textTheme.titleMedium),
                 onTap: () {},
               ),
               Divider(color: MyColors.dividerColor,),
               ListTile(
-                title: Text(MyTexts.techBlogInGithub),
+                title: Text(MyTexts.techBlogInGithub,style: Theme.of(context).textTheme.titleMedium),
                 onTap: () {},
               ),
               Divider(color: MyColors.dividerColor,)
