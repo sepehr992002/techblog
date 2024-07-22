@@ -141,8 +141,7 @@ class HomeScreen extends StatelessWidget {
                               foregroundDecoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(16),
                                   image: DecorationImage(
-                                      image: NetworkImage(
-                                          blogList[index].imageUrl),
+                                      image: AssetImage(homePagePosterMap["imageAsset"]),
                                       fit: BoxFit.cover)),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(16),
@@ -244,8 +243,7 @@ class HomeScreen extends StatelessWidget {
                               foregroundDecoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(16),
                                   image: DecorationImage(
-                                      image: NetworkImage(
-                                          blogList[index].imageUrl),
+                                      image: AssetImage(homePagePosterMap["imageAsset"]),
                                       fit: BoxFit.cover)),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(16),
