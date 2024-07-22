@@ -20,5 +20,10 @@ class MyTexts{
   static const String hintEmail = 'techblog@gmail.com';
   static const String continew = 'ادامه';
   static const String enterActivationCode = 'کد فعال سازی رو وارد کن';
+  static const String shareText = """
+  من از تک بلاگ استفاده میکنم خیلی باحاله تو هم پاشو بیا
+  www.sasansafari.com
+  """
+  ;
 
 }

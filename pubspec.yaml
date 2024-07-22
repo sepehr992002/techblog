@@ -43,6 +43,7 @@ dependencies:
   flutter_spinkit: ^5.2.1
   validators: ^3.0.0
   get: ^4.6.6
+  share_plus: ^9.0.0
 
 dev_dependencies:
   flutter_test:

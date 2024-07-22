@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:get/get.dart';
 import 'package:tech_blog/components/my_colors.dart';
 import 'package:tech_blog/view/home_screen.dart';
 import 'package:tech_blog/view/main_screen.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         localizationsDelegates: AppLocalizations.localizationsDelegates,

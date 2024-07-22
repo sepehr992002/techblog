@@ -1,5 +1,8 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:tech_blog/components/fake_data.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/components/my_colors.dart';
@@ -7,16 +10,14 @@ import 'package:tech_blog/components/my_texts.dart';
 import 'package:tech_blog/view/profile_screen.dart';
 import 'home_screen.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
 
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-final GlobalKey<ScaffoldState> _scaffoldKey =  GlobalKey<ScaffoldState>();
 
-class _MainScreenState extends State<MainScreen> {
-  var selectedIndex = 0;
+final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+class MainScreen extends StatelessWidget {
+  Rx<int> selectedIndex = 0.obs;
+
+  MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer(
-        width: width/1.3,
+        width: width / 1.3,
         backgroundColor: MyColors.scaffoldBg,
         child: Padding(
           padding: EdgeInsets.only(left: bodyMargin, right: bodyMargin),
@@ -40,25 +41,41 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               )),
               ListTile(
-                title: Text(MyTexts.profile,style: Theme.of(context).textTheme.titleMedium,),
+                title: Text(
+                  MyTexts.profile,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
                 onTap: () {},
               ),
-              Divider(color: MyColors.dividerColor,),
+              Divider(
+                color: MyColors.dividerColor,
+              ),
               ListTile(
-                title: Text(MyTexts.aboutTechBlog,style: Theme.of(context).textTheme.titleMedium),
+                title: Text(MyTexts.aboutTechBlog,
+                    style: Theme.of(context).textTheme.titleMedium),
                 onTap: () {},
               ),
-              Divider(color: MyColors.dividerColor,),
+              Divider(
+                color: MyColors.dividerColor,
+              ),
               ListTile(
-                title: Text(MyTexts.share,style: Theme.of(context).textTheme.titleMedium),
-                onTap: () {},
+                title: Text(MyTexts.share,
+                    style: Theme.of(context).textTheme.titleMedium),
+                onTap: () async{
+                    await Share.share(MyTexts.shareText);
+                },
               ),
-              Divider(color: MyColors.dividerColor,),
+              Divider(
+                color: MyColors.dividerColor,
+              ),
               ListTile(
-                title: Text(MyTexts.techBlogInGithub,style: Theme.of(context).textTheme.titleMedium),
+                title: Text(MyTexts.techBlogInGithub,
+                    style: Theme.of(context).textTheme.titleMedium),
                 onTap: () {},
               ),
-              Divider(color: MyColors.dividerColor,)
+              Divider(
+                color: MyColors.dividerColor,
+              )
             ],
           ),
         ),
@@ -70,12 +87,9 @@ class _MainScreenState extends State<MainScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             InkWell(
-              onTap: () {
-                setState(() {
+                onTap: () {
                   _scaffoldKey.currentState!.openDrawer();
-
-                });
-              },
+                },
                 child: Icon(Icons.menu)),
             Image.asset(
               Assets.images.logo.path,
@@ -89,13 +103,13 @@ class _MainScreenState extends State<MainScreen> {
         padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
         child: Stack(
           children: [
-            IndexedStack(
-              index: selectedIndex,
+            Obx(()=>IndexedStack(
+              index: selectedIndex.value,
               children: [
                 HomeScreen(bodyMargin: bodyMargin),
                 ProfileScreen(),
               ],
-            ),
+            ),),
             Positioned(
                 left: 0,
                 right: 0,
@@ -103,9 +117,7 @@ class _MainScreenState extends State<MainScreen> {
                 child: BottomNav(
                   bodyMargin: bodyMargin,
                   onBottomNavigationTap: (chosenScreen) {
-                    setState(() {
-                      selectedIndex = chosenScreen;
-                    });
+                      selectedIndex.value = chosenScreen;
                   },
                 )),
           ],
@@ -130,11 +142,6 @@ class BottomNav extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
     return Container(
       height: height / 10,
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: GradientColors.bottomNavBackground,
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter)),
       child: Padding(
         padding: EdgeInsets.only(left: bodyMargin, right: bodyMargin),
         child: Container(
