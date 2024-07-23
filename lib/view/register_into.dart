@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tech_blog/view/cats_screen.dart';
@@ -21,14 +22,14 @@ class RegisterInto extends StatelessWidget {
             height: 80,
             width: 80,
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Text(
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.titleMedium,
               MyTexts.welcomeMessage),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           ElevatedButton(
@@ -56,7 +57,7 @@ class RegisterInto extends StatelessWidget {
                   topRight: Radius.circular(16), topLeft: Radius.circular(16))),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
               Text(
@@ -68,10 +69,10 @@ class RegisterInto extends StatelessWidget {
                 child: TextField(
                   onChanged: (value) {
                     if (isEmail(value)) {
-                      print('email is correct');
+                      log('email is correct');
                     } else {
                       // validator package which includes is email is used to validate strings
-                      print("email is false");
+                      log("email is false");
                     }
                   },
                   textAlign: TextAlign.center,
@@ -109,7 +110,7 @@ class RegisterInto extends StatelessWidget {
                   topRight: Radius.circular(16), topLeft: Radius.circular(16))),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
               Text(
@@ -121,10 +122,10 @@ class RegisterInto extends StatelessWidget {
                 child: TextField(
                   onChanged: (value) {
                     if (isEmail(value)) {
-                      print('activation code is correct');
+                      log('activation code is correct');
                     } else {
                       // validator package which includes is email is used to validate strings
-                      print("activation code is false");
+                      log("activation code is false");
                     }
                   },
                   textAlign: TextAlign.center,

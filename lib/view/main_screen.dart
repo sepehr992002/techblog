@@ -1,9 +1,6 @@
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:tech_blog/components/fake_data.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/components/my_colors.dart';
 import 'package:tech_blog/components/my_texts.dart';
@@ -15,7 +12,7 @@ import 'home_screen.dart';
 final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
 class MainScreen extends StatelessWidget {
-  Rx<int> selectedIndex = 0.obs;
+  final Rx<int> selectedIndex = 0.obs;
 
   MainScreen({super.key});
 
@@ -47,7 +44,7 @@ class MainScreen extends StatelessWidget {
                 ),
                 onTap: () {},
               ),
-              Divider(
+              const Divider(
                 color: MyColors.dividerColor,
               ),
               ListTile(
@@ -55,7 +52,7 @@ class MainScreen extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleMedium),
                 onTap: () {},
               ),
-              Divider(
+              const Divider(
                 color: MyColors.dividerColor,
               ),
               ListTile(
@@ -65,7 +62,7 @@ class MainScreen extends StatelessWidget {
                     await Share.share(MyTexts.shareText);
                 },
               ),
-              Divider(
+              const Divider(
                 color: MyColors.dividerColor,
               ),
               ListTile(
@@ -73,7 +70,7 @@ class MainScreen extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleMedium),
                 onTap: () {},
               ),
-              Divider(
+              const Divider(
                 color: MyColors.dividerColor,
               )
             ],
@@ -90,12 +87,12 @@ class MainScreen extends StatelessWidget {
                 onTap: () {
                   _scaffoldKey.currentState!.openDrawer();
                 },
-                child: Icon(Icons.menu)),
+                child: const Icon(Icons.menu)),
             Image.asset(
               Assets.images.logo.path,
               height: height / 13.6,
             ),
-            Icon(Icons.search),
+            const Icon(Icons.search),
           ],
         ),
       ),
@@ -139,12 +136,15 @@ class BottomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
-    return Container(
+    return SizedBox(
       height: height / 10,
       child: Padding(
         padding: EdgeInsets.only(left: bodyMargin, right: bodyMargin),
         child: Container(
+          height: height / 8,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(18),
+              gradient: const LinearGradient(colors: GradientColors.bottomNav)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -175,10 +175,6 @@ class BottomNav extends StatelessWidget {
                   )),
             ],
           ),
-          height: height / 8,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(18),
-              gradient: LinearGradient(colors: GradientColors.bottomNav)),
         ),
       ),
     );

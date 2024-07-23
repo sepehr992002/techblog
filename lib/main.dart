@@ -3,17 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/components/my_colors.dart';
-import 'package:tech_blog/view/home_screen.dart';
 import 'package:tech_blog/view/main_screen.dart';
-import 'package:tech_blog/view/cats_screen.dart';
-import 'package:tech_blog/view/profile_screen.dart';
-import 'package:tech_blog/view/register_into.dart';
-import 'package:tech_blog/view/splash_screen.dart';
 
 import 'gen/assets.gen.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: MyColors.statusBarColor,
       systemNavigationBarColor: MyColors.systemNavigationBarColor,
       systemNavigationBarIconBrightness: Brightness.dark,
@@ -23,6 +18,7 @@ void main() {
 
 String localeCode = 'fa';
 String fontFamily = 'dana';
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -60,9 +56,14 @@ class MyApp extends StatelessWidget {
           ))),
           fontFamily: Assets.fonts.danaRegular,
           textTheme: TextTheme(
-            labelLarge: TextStyle(color: MyColors.seeMore,fontFamily: fontFamily,fontSize: 12),
-            headlineMedium: TextStyle(color: Colors.grey,fontFamily: fontFamily,fontSize: 12),
-            titleMedium: TextStyle(color: Colors.black,fontFamily: fontFamily,fontSize: 12),
+              labelLarge: TextStyle(
+                  color: MyColors.seeMore,
+                  fontFamily: fontFamily,
+                  fontSize: 12),
+              headlineMedium: TextStyle(
+                  color: Colors.grey, fontFamily: fontFamily, fontSize: 12),
+              titleMedium: TextStyle(
+                  color: Colors.black, fontFamily: fontFamily, fontSize: 12),
               bodyMedium: TextStyle(
                   color: Colors.white, fontFamily: fontFamily, fontSize: 12)),
           // This is the theme of your application.
