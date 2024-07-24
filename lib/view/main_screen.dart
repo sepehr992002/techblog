@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
@@ -10,7 +9,6 @@ import 'package:tech_blog/view/profile_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'home_screen.dart';
 
-
 final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
 class MainScreen extends StatelessWidget {
@@ -20,14 +18,8 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery
-        .of(context)
-        .size
-        .width;
-    var height = MediaQuery
-        .of(context)
-        .size
-        .height;
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     double bodyMargin = width / 10;
     return Scaffold(
       key: _scaffoldKey,
@@ -40,18 +32,15 @@ class MainScreen extends StatelessWidget {
             children: [
               DrawerHeader(
                   child: Center(
-                    child: Image.asset(
-                      Assets.images.logo.path,
-                      scale: 3,
-                    ),
-                  )),
+                child: Image.asset(
+                  Assets.images.logo.path,
+                  scale: 3,
+                ),
+              )),
               ListTile(
                 title: Text(
                   MyTexts.profile,
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .titleMedium,
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
                 onTap: () {},
               ),
@@ -60,10 +49,7 @@ class MainScreen extends StatelessWidget {
               ),
               ListTile(
                 title: Text(MyTexts.aboutTechBlog,
-                    style: Theme
-                        .of(context)
-                        .textTheme
-                        .titleMedium),
+                    style: Theme.of(context).textTheme.titleMedium),
                 onTap: () {},
               ),
               const Divider(
@@ -71,10 +57,7 @@ class MainScreen extends StatelessWidget {
               ),
               ListTile(
                 title: Text(MyTexts.share,
-                    style: Theme
-                        .of(context)
-                        .textTheme
-                        .titleMedium),
+                    style: Theme.of(context).textTheme.titleMedium),
                 onTap: () async {
                   await Share.share(MyTexts.shareText);
                 },
@@ -84,13 +67,10 @@ class MainScreen extends StatelessWidget {
               ),
               ListTile(
                 title: Text(MyTexts.techBlogInGithub,
-                    style: Theme
-                        .of(context)
-                        .textTheme
-                        .titleMedium),
+                    style: Theme.of(context).textTheme.titleMedium),
                 onTap: () {
                   urlLauncher(MyTexts.techBlogGithubUrl);
-                  },
+                },
               ),
               const Divider(
                 color: MyColors.dividerColor,
@@ -122,14 +102,15 @@ class MainScreen extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
         child: Stack(
           children: [
-            Obx(() =>
-                IndexedStack(
-                  index: selectedIndex.value,
-                  children: [
-                    HomeScreen(bodyMargin: bodyMargin),
-                    ProfileScreen(),
-                  ],
-                ),),
+            Obx(
+              () => IndexedStack(
+                index: selectedIndex.value,
+                children: [
+                  HomeScreen(bodyMargin: bodyMargin),
+                  const ProfileScreen(),
+                ],
+              ),
+            ),
             Positioned(
                 left: 0,
                 right: 0,
@@ -151,16 +132,14 @@ class BottomNav extends StatelessWidget {
   final double bodyMargin;
   final Function(int chosenScreen) onBottomNavigationTap;
 
-  const BottomNav({super.key,
-    required this.bodyMargin,
-    required this.onBottomNavigationTap});
+  const BottomNav(
+      {super.key,
+      required this.bodyMargin,
+      required this.onBottomNavigationTap});
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery
-        .of(context)
-        .size
-        .height;
+    var height = MediaQuery.of(context).size.height;
     return SizedBox(
       height: height / 10,
       child: Padding(
