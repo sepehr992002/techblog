@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tech_blog/components/my_texts.dart';
+import 'package:tech_blog/view/widgets/main_article.dart';
 import '../../components/fake_data.dart';
 import '../../gen/assets.gen.dart';
 import '../../components/my_colors.dart';
@@ -13,14 +14,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery
-        .of(context)
-        .size
-        .width;
-    var height = MediaQuery
-        .of(context)
-        .size
-        .height;
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -64,10 +59,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Text(
                   MyTexts.viewHottestBlogs,
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .labelLarge,
+                  style: Theme.of(context).textTheme.labelLarge,
                 )
               ],
             ),
@@ -75,84 +67,18 @@ class HomeScreen extends StatelessWidget {
           SizedBox(
             height: height / 3.5,
             child: ListView.builder(
-              itemCount: blogList
-                  .getRange(0, 5)
-                  .length,
+              itemCount: blogList.getRange(0, 5).length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return Padding(
-                  padding: EdgeInsets.only(right: index == 0 ? bodyMargin : 15),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: height / 5.3,
-                        width: width / 2.5,
-                        child: Stack(
-                          children: [
-                            Container(
-                              foregroundDecoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  image: DecorationImage(
-                                      image: AssetImage(homePagePosterMap["imageAsset"]), fit: BoxFit.cover)),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  gradient: LinearGradient(
-                                      begin: Alignment.bottomCenter,
-                                      end: Alignment.topCenter,
-                                      colors: GradientColors.blogPost)),
-                            ),
-                            Positioned(
-                                bottom: 8,
-                                left: 0,
-                                right: 0,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text(
-                                      blogList[index].writer,
-                                      style: Theme
-                                          .of(context)
-                                          .textTheme
-                                          .bodyMedium,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          blogList[index].views,
-                                          style: Theme
-                                              .of(context)
-                                              .textTheme
-                                              .bodyMedium,
-                                        ),
-                                        SizedBox(
-                                          width: 8,
-                                        ),
-                                        Icon(
-                                          Icons.remove_red_eye_sharp,
-                                          color: Colors.white,
-                                          size: 16,
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                )),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 12),
-                        child: SizedBox(
-                            width: width / 2.4,
-                            child: Text(
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              blogList[index].title,
-                              style: TextStyle(color: Colors.black),
-                            )),
-                      )
-                    ],
-                  ),
-                );
+                return MainArticle(
+                   height: height,
+                    width: width,
+                    imagePath: 'imagePath',
+                    views: 1,
+                    writer: 'writer',
+                    title: 'title',
+                    index: index,
+                    bodyMargin: bodyMargin);
               },
             ),
           ),
@@ -171,10 +97,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Text(
                   MyTexts.viewHottestPodcasts,
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .labelLarge,
+                  style: Theme.of(context).textTheme.labelLarge,
                 )
               ],
             ),
@@ -182,9 +105,7 @@ class HomeScreen extends StatelessWidget {
           SizedBox(
             height: height / 3.5,
             child: ListView.builder(
-              itemCount: blogList
-                  .getRange(0, 5)
-                  .length,
+              itemCount: blogList.getRange(0, 5).length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Padding(
@@ -217,19 +138,13 @@ class HomeScreen extends StatelessWidget {
                                   children: [
                                     Text(
                                       blogList[index].writer,
-                                      style: Theme
-                                          .of(context)
-                                          .textTheme
-                                          .bodyMedium,
+                                      style: Theme.of(context).textTheme.bodyMedium,
                                     ),
                                     Row(
                                       children: [
                                         Text(
                                           blogList[index].views,
-                                          style: Theme
-                                              .of(context)
-                                              .textTheme
-                                              .bodyMedium,
+                                          style: Theme.of(context).textTheme.bodyMedium,
                                         ),
                                         SizedBox(
                                           width: 8,
@@ -263,7 +178,7 @@ class HomeScreen extends StatelessWidget {
               },
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 90,
           )
         ],

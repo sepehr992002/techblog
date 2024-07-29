@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../components/fake_data.dart';
 import '../../components/my_colors.dart';
 
@@ -10,6 +9,8 @@ class MainArticle extends StatelessWidget {
   final int views;
   final int index;
   final double bodyMargin;
+  final double width;
+  final double height;
 
   const MainArticle({super.key,
     required this.imagePath,
@@ -17,18 +18,13 @@ class MainArticle extends StatelessWidget {
     required this.writer,
     required this.title,
     required this.index,
+    required this.width,
+    required this.height,
     required this.bodyMargin});
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery
-        .of(context)
-        .size
-        .width;
-    var width = MediaQuery
-        .of(context)
-        .size
-        .height;
+
     return Padding(
       padding: EdgeInsets.only(right: index == 0 ? bodyMargin : 15),
       child: Column(

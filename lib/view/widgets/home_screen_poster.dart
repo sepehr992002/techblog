@@ -57,7 +57,7 @@ class HomeScreenPoster extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        author + '_' + date,
+                        '${author}_$date',
                         style: Theme
                             .of(context)
                             .textTheme
