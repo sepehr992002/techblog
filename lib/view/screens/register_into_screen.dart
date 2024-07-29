@@ -1,13 +1,13 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tech_blog/view/cats_screen.dart';
+import 'package:tech_blog/view/screens/cats_screen.dart';
 import 'package:validators/validators.dart';
-import '../gen/assets.gen.dart';
-import '../components/my_texts.dart';
+import '../../gen/assets.gen.dart';
+import '../../components/my_texts.dart';
 
-class RegisterInto extends StatelessWidget {
-  const RegisterInto({super.key});
+class RegisterIntoScreen extends StatelessWidget {
+  const RegisterIntoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

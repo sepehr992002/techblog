@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/components/my_colors.dart';
-import 'package:tech_blog/view/main_screen.dart';
+import 'package:tech_blog/view/screens/main_screen.dart';
 
 import 'gen/assets.gen.dart';
 
