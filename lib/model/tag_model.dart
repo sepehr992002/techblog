@@ -1,13 +1,13 @@
-class PosterModel {
+class TagModel {
   String? id;
   String? title;
 
-  PosterModel({
+  TagModel({
     required this.id,
     required this.title,
   });
 
-  PosterModel.fromJson(Map<String, dynamic> element) {
+  TagModel.fromJson(Map<String, dynamic> element) {
     id = element['id'];
     title = element['title'];
   }

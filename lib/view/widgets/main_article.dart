@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../components/fake_data.dart';
 import '../../components/my_colors.dart';
 
 class MainArticle extends StatelessWidget {
@@ -38,7 +37,7 @@ class MainArticle extends StatelessWidget {
                   foregroundDecoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
                       image: DecorationImage(
-                          image: AssetImage(homePagePosterMap["imageAsset"]), fit: BoxFit.cover)),
+                          image: NetworkImage(imagePath), fit: BoxFit.cover)),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
                       gradient: LinearGradient(
@@ -54,7 +53,7 @@ class MainArticle extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
-                          blogList[index].writer,
+                          writer,
                           style: Theme
                               .of(context)
                               .textTheme
@@ -63,7 +62,7 @@ class MainArticle extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              blogList[index].views,
+                              '$views',
                               style: Theme
                                   .of(context)
                                   .textTheme
@@ -91,7 +90,7 @@ class MainArticle extends StatelessWidget {
                 child: Text(
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  blogList[index].title,
+                  title,
                   style: TextStyle(color: Colors.black),
                 )),
           )
