@@ -66,10 +66,20 @@ class MainPodcast extends StatelessWidget {
                     );
                   },
                   errorWidget: (context, url, error) {
-                    return Icon(
-                      Icons.image_not_supported,
-                      size: 50,
-                      color: Colors.grey,
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.image_not_supported,
+                            size: 50,
+                            color: Colors.grey,
+                          ),
+                          SizedBox(height: 12,),
+                          Text('could not load image',style: TextStyle(color: Colors.black),)
+                        ],
+                      ),
                     );
                   },
                 ),

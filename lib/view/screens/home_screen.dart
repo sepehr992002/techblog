@@ -82,9 +82,7 @@ class HomeScreen extends StatelessWidget {
                       width: width,
                       imagePath: homeScreenController.articlesList[index].image!,
                       views: int.parse(homeScreenController.articlesList[index].view!),
-                      writer: homeScreenController.articlesList[index].author != null
-                          ? homeScreenController.articlesList[index].author!
-                          : 'Unknown',
+                      writer: homeScreenController.articlesList[index].author!,
                       title: homeScreenController.articlesList[index].title!,
                       index: index,
                       bodyMargin: bodyMargin);
@@ -127,7 +125,9 @@ class HomeScreen extends StatelessWidget {
                     title: homeScreenController.podcastsList[index].title!,
                     imagePath: homeScreenController.podcastsList[index].poster!,
                     views: int.parse(homeScreenController.podcastsList[index].view!),
-                    writer: homeScreenController.podcastsList[index].author!,
+                    writer: homeScreenController.podcastsList[index].author != null
+                        ? homeScreenController.podcastsList[index].author!
+                        : 'unknown',
                   );
                 },
               ),

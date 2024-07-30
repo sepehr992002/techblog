@@ -11,14 +11,14 @@ class PodcastModel {
   String? createdAt;
 
   PodcastModel({
-    required this.id,
-    required this.title,
-    required this.poster,
-    required this.catName,
-    required this.author,
-    required this.view,
-    required this.status,
-    required this.createdAt,
+     this.id = 'Unknown',
+     this.title = 'Unknown',
+     this.poster = 'Unknown',
+     this.catName = 'Unknown',
+     this.author = 'Unknown',
+     this.view = 'Unknown',
+     this.status = 'Unknown',
+     this.createdAt = 'Unknown',
   });
   PodcastModel.fromJson(Map<String,dynamic> element){
     id = element['id'];

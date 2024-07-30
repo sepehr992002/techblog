@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../../components/my_colors.dart';
 
 class MainArticle extends StatelessWidget {
@@ -33,17 +35,43 @@ class MainArticle extends StatelessWidget {
             width: width / 2.5,
             child: Stack(
               children: [
-                Container(
-                  foregroundDecoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      image: DecorationImage(
-                          image: NetworkImage(imagePath), fit: BoxFit.cover)),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      gradient: LinearGradient(
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter,
-                          colors: GradientColors.blogPost)),
+                CachedNetworkImage(
+                  imageUrl: imagePath,
+                  imageBuilder: (context, imageProvider) {
+                    return Container(
+                        foregroundDecoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            image: DecorationImage(image: NetworkImage(imagePath), fit: BoxFit.cover)),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            gradient: LinearGradient(
+                                begin: Alignment.bottomCenter,
+                                end: Alignment.topCenter,
+                                colors: GradientColors.blogPost)));
+                  },
+                  placeholder: (context, url) {
+                    return SpinKitFadingCube(
+                      size: 32,
+                      color: MyColors.primaryColor,
+                    );
+                  },
+                  errorWidget: (context, url, error) {
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.image_not_supported,
+                            size: 50,
+                            color: Colors.grey,
+                          ),
+                          SizedBox(height: 12,),
+                          Text('could not load image',style: TextStyle(color: Colors.black),)
+                        ],
+                      ),
+                    );
+                  },
                 ),
                 Positioned(
                     bottom: 8,
