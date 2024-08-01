@@ -1,38 +1,67 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../../components/my_colors.dart';
 
 class HomeScreenPoster extends StatelessWidget {
-  final int view;
   final String imagePath;
-  final String author;
-  final String date;
   final String title;
 
-  const HomeScreenPoster({super.key,
-    required this.view,
-    required this.author,
-    required this.date,
-    required this.imagePath,
-    required this.title});
+  const HomeScreenPoster({super.key, required this.imagePath, required this.title});
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery
-        .of(context)
-        .size
-        .width;
-    var height = MediaQuery
-        .of(context)
-        .size
-        .height;
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     return Stack(
       children: [
-        Container(
-          width: width / 1.25,
-          height: height / 4.2,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              image: DecorationImage(fit: BoxFit.cover, image: AssetImage(imagePath))),
+        CachedNetworkImage(
+          imageUrl: imagePath,
+          imageBuilder: (context, imageProvider) {
+            return Container(
+              width: width / 1.25,
+              height: height / 4.2,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  image: DecorationImage(fit: BoxFit.cover, image: NetworkImage(imagePath))),
+            );
+          },
+          placeholder: (context, url) {
+            return Container(
+              alignment: Alignment.center,
+              child: SpinKitFadingCube(
+                size: 32,
+                color: MyColors.primaryColor,
+              ),
+              width: width / 1.25,
+              height: height / 4.2,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  ),
+            );
+          },
+          errorWidget: (context, url, error) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.image_not_supported,
+                    size: 50,
+                    color: Colors.grey,
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Text(
+                    'could not load image',
+                    style: TextStyle(color: Colors.black),
+                  )
+                ],
+              ),
+            );
+          },
         ),
         Container(
           width: width / 1.25,
@@ -53,43 +82,9 @@ class HomeScreenPoster extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '${author}_$date',
-                        style: Theme
-                            .of(context)
-                            .textTheme
-                            .bodyMedium,
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            '$view',
-                            style: Theme
-                                .of(context)
-                                .textTheme
-                                .bodyMedium,
-                          ),
-                          SizedBox(
-                            width: 8,
-                          ),
-                          Icon(
-                            Icons.remove_red_eye_sharp,
-                            color: Colors.white,
-                            size: 16,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
                   Text(
                     title,
-                    style: Theme
-                        .of(context)
-                        .textTheme
-                        .bodyMedium,
+                    style: Theme.of(context).textTheme.bodyMedium,
                   )
                 ],
               ),

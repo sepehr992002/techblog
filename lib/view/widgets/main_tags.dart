@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../components/fake_data.dart';
 import '../../components/my_colors.dart';
 import '../../gen/assets.gen.dart';
 
 class MainTags extends StatelessWidget {
-  final int index;
+  final String title;
 
-  const MainTags({super.key, required this.index});
+  const MainTags({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +31,7 @@ class MainTags extends StatelessWidget {
               width: 8,
             ),
             Text(
-              tagList[index].title,
+              title,
               style: Theme
                   .of(context)
                   .textTheme

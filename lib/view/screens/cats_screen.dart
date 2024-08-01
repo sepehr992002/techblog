@@ -79,7 +79,7 @@ class _MyCatsState extends State<MyCats> {
                             }
                           });
                         },
-                        child: MainTags(index: index));
+                        child: MainTags(title: tagList[index].title,));
                   },
                 ),
               ),
