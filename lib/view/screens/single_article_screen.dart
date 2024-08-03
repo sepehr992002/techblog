@@ -154,7 +154,10 @@ class SingleArticleScreen extends StatelessWidget {
                               onTap: () async {
                                 var tagId = singleArticleController.relatedTags[index].id!;
                                 await Get.find<ListArticleController>().getArticleListWithTagId(tagId);
-                                Get.to(ArticleListScreen(title: singleArticleController.relatedTags[index].title!,),
+                                Get.to(
+                                    ArticleListScreen(
+                                      title: singleArticleController.relatedTags[index].title!,
+                                    ),
                                     arguments: [singleArticleController.relatedTags[index].title]);
                               },
                               child: Padding(
@@ -183,19 +186,25 @@ class SingleArticleScreen extends StatelessWidget {
                           itemCount: singleArticleController.relatedArticles.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                            return MainArticle(
-                                height: height,
-                                width: width,
-                                imagePath: singleArticleController.relatedArticles[index].image!,
-                                views: int.parse(singleArticleController.relatedArticles[index].view!),
-                                writer: singleArticleController.relatedArticles[index].author != null
-                                    ? singleArticleController.relatedArticles[index].author!
-                                    : 'Unknown',
-                                title: singleArticleController.relatedArticles[index].title != null
-                                    ? singleArticleController.relatedArticles[index].title!
-                                    : 'undefined',
-                                index: index,
-                                bodyMargin: 30);
+                            return GestureDetector(
+                              onTap: () {
+                                singleArticleController
+                                    .getArticleInfo(int.parse(singleArticleController.relatedArticles[index].id!));
+                              },
+                              child: MainArticle(
+                                  height: height,
+                                  width: width,
+                                  imagePath: singleArticleController.relatedArticles[index].image!,
+                                  views: int.parse(singleArticleController.relatedArticles[index].view!),
+                                  writer: singleArticleController.relatedArticles[index].author != null
+                                      ? singleArticleController.relatedArticles[index].author!
+                                      : 'Unknown',
+                                  title: singleArticleController.relatedArticles[index].title != null
+                                      ? singleArticleController.relatedArticles[index].title!
+                                      : 'undefined',
+                                  index: index,
+                                  bodyMargin: 30),
+                            );
                           },
                         ),
                       ),

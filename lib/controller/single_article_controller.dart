@@ -4,6 +4,7 @@ import 'package:tech_blog/model/article_model.dart';
 import 'package:tech_blog/model/tag_model.dart';
 import '../components/api_constant.dart';
 import '../services/dio_service.dart';
+import '../view/screens/single_article_screen.dart';
 
 class SingleArticleController extends GetxController {
   late RxList<ArticleModel> relatedArticles = RxList();
@@ -31,5 +32,7 @@ class SingleArticleController extends GetxController {
       }
       loading.value = false;
     }
+    Get.to(SingleArticleScreen());
+
   }
 }

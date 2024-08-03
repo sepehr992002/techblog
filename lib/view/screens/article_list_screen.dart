@@ -4,7 +4,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/controller/list_article_controller.dart';
 import 'package:tech_blog/controller/single_article_controller.dart';
-import 'package:tech_blog/view/screens/single_article_screen.dart';
 
 class ArticleListScreen extends StatelessWidget {
   String title;
@@ -28,7 +27,6 @@ class ArticleListScreen extends StatelessWidget {
               return GestureDetector(
                 onTap: () {
                   singleArticleController.getArticleInfo(int.parse(listArticleController.articleList[index].id!));
-                  Get.to(SingleArticleScreen());
                   // one way to send data to the next page is using arguments
                   // Get.to(const SingleArticleScreen(), arguments: [articleController.articleList[index].id]);
                   // data is accessible in the next screen like this
