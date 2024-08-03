@@ -3,12 +3,12 @@ import '../components/api_constant.dart';
 import '../model/article_model.dart';
 import '../services/dio_service.dart';
 
-class ListArticleController extends GetxController{
+class ListArticleController extends GetxController {
   RxList<ArticleModel> articleList = RxList();
   RxBool loading = false.obs;
 
   @override
-  onInit(){
+  onInit() {
     super.onInit();
     getArticleList();
   }
@@ -17,12 +17,27 @@ class ListArticleController extends GetxController{
     loading.value = true;
     //TODO get user id from get storage + user id
     var response = await DioService().getMethod(ApiConstant.getArticleList);
-    if(response.statusCode == 200){
-      for(var element in response.data){
+    if (response.statusCode == 200) {
+      for (var element in response.data) {
         articleList.add(ArticleModel.fromJson(element));
       }
       print(articleList[2].title);
-      loading.value =false;
+      loading.value = false;
+    }
+  }
+
+  getArticleListWithTagId(String tagId) async {
+    articleList.clear();
+    loading.value = true;
+    //TODO get user id from get storage + user id
+    var response = await DioService()
+        .getMethod('${ApiConstant.baseUrl}article/get.php?command=get_articles_with_tag_id&tag_id=$tagId&user_id=1');
+    if (response.statusCode == 200) {
+      for (var element in response.data) {
+        articleList.add(ArticleModel.fromJson(element));
+      }
+      print(articleList[2].title);
+      loading.value = false;
     }
   }
 }

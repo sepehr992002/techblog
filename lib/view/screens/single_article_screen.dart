@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
+import 'package:tech_blog/controller/list_article_controller.dart';
+import 'package:tech_blog/view/screens/article_list_screen.dart';
 import '../../components/my_colors.dart';
 import '../../controller/single_article_controller.dart';
 import '../../gen/assets.gen.dart';
@@ -148,14 +150,23 @@ class SingleArticleScreen extends StatelessWidget {
                           scrollDirection: Axis.horizontal,
                           itemCount: singleArticleController.relatedTags.length,
                           itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Container(
-                                alignment: Alignment.center,
-                                width: 80,
-                                height: 30,
-                                decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.grey),
-                                child: Text(singleArticleController.relatedTags[index].title!),
+                            return GestureDetector(
+                              onTap: () async {
+                                var tagId = singleArticleController.relatedTags[index].id!;
+                                await Get.find<ListArticleController>().getArticleListWithTagId(tagId);
+                                Get.to(ArticleListScreen(title: singleArticleController.relatedTags[index].title!,),
+                                    arguments: [singleArticleController.relatedTags[index].title]);
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  width: 80,
+                                  height: 30,
+                                  decoration:
+                                      BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.grey),
+                                  child: Text(singleArticleController.relatedTags[index].title!),
+                                ),
                               ),
                             );
                           },

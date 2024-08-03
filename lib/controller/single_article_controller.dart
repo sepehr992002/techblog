@@ -13,6 +13,7 @@ class SingleArticleController extends GetxController {
 
 
   getArticleInfo(int id) async {
+    articleInfoModel = ArticleInfoModel().obs;
     //TODO setup user id later
     var userId = '';
     loading.value = true;

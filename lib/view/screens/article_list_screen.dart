@@ -7,7 +7,8 @@ import 'package:tech_blog/controller/single_article_controller.dart';
 import 'package:tech_blog/view/screens/single_article_screen.dart';
 
 class ArticleListScreen extends StatelessWidget {
-  ArticleListScreen({super.key});
+  String title;
+  ArticleListScreen({super.key,required this.title});
 
   ListArticleController listArticleController = Get.put(ListArticleController());
   SingleArticleController singleArticleController = Get.put(SingleArticleController());
@@ -16,7 +17,7 @@ class ArticleListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      appBar: appBar('مقالات جدید'),
+      appBar: appBar('$title'),
       body: SizedBox(
         height: double.infinity,
         child: Obx(
@@ -27,7 +28,7 @@ class ArticleListScreen extends StatelessWidget {
               return GestureDetector(
                 onTap: () {
                   singleArticleController.getArticleInfo(int.parse(listArticleController.articleList[index].id!));
-                  Get.to( SingleArticleScreen());
+                  Get.to(SingleArticleScreen());
                   // one way to send data to the next page is using arguments
                   // Get.to(const SingleArticleScreen(), arguments: [articleController.articleList[index].id]);
                   // data is accessible in the next screen like this
