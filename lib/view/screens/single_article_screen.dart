@@ -140,25 +140,26 @@ class SingleArticleScreen extends StatelessWidget {
                     ),
                     HtmlWidget(enableCaching: true, onErrorBuilder: (context, element, error) {
                       return SpinKitFadingCube();
-                    },
-                        singleArticleController.articleInfoModel.value.content!),
+                    }, singleArticleController.articleInfoModel.value.content!),
                     SizedBox(
                       height: 70,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 12,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: Container(
-                              alignment: Alignment.center,
-                              child: Text('data'),
-                              width: 80,
-                              height: 30,
-                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.grey),
-                            ),
-                          );
-                        },
+                      child: Obx(
+                        () => ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: singleArticleController.relatedTags.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Container(
+                                alignment: Alignment.center,
+                                width: 80,
+                                height: 30,
+                                decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.grey),
+                                child: Text(singleArticleController.relatedTags[index].title!),
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -166,20 +167,26 @@ class SingleArticleScreen extends StatelessWidget {
                     ),
                     SizedBox(
                       height: height / 3.5,
-                      child: ListView.builder(
-                        itemCount: 12,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return MainArticle(
-                              height: height,
-                              width: width,
-                              imagePath: 'imagePath',
-                              views: 123,
-                              writer: 'writer',
-                              title: 'title',
-                              index: index,
-                              bodyMargin: 30);
-                        },
+                      child: Obx(
+                        () => ListView.builder(
+                          itemCount: singleArticleController.relatedArticles.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return MainArticle(
+                                height: height,
+                                width: width,
+                                imagePath: singleArticleController.relatedArticles[index].image!,
+                                views: int.parse(singleArticleController.relatedArticles[index].view!),
+                                writer: singleArticleController.relatedArticles[index].author != null
+                                    ? singleArticleController.relatedArticles[index].author!
+                                    : 'Unknown',
+                                title: singleArticleController.relatedArticles[index].title != null
+                                    ? singleArticleController.relatedArticles[index].title!
+                                    : 'undefined',
+                                index: index,
+                                bodyMargin: 30);
+                          },
+                        ),
                       ),
                     ),
                   ],
