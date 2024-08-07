@@ -5,15 +5,16 @@ import 'package:get/get.dart';
 import 'package:tech_blog/components/my_colors.dart';
 import 'package:tech_blog/view/screens/article_list_screen.dart';
 import 'package:tech_blog/view/screens/splash_screen.dart';
-
+import 'package:get_storage/get_storage.dart';
 import 'gen/assets.gen.dart';
 
-void main() {
+void main() async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: MyColors.statusBarColor,
       systemNavigationBarColor: MyColors.systemNavigationBarColor,
       systemNavigationBarIconBrightness: Brightness.dark,
       statusBarIconBrightness: Brightness.dark));
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
