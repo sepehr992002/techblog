@@ -1,13 +1,16 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:tech_blog/controller/register_controller.dart';
 import 'package:tech_blog/view/screens/cats_screen.dart';
 import 'package:validators/validators.dart';
 import '../../gen/assets.gen.dart';
 import '../../components/my_texts.dart';
 
 class RegisterIntoScreen extends StatelessWidget {
-  const RegisterIntoScreen({super.key});
+  RegisterIntoScreen({super.key});
+  RegisterController registerController = Get.put(RegisterController());
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +70,7 @@ class RegisterIntoScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(24),
                 child: TextField(
+                  controller: registerController.emailTextEditingController,
                   onChanged: (value) {
                     if (isEmail(value)) {
                       log('email is correct');
@@ -83,6 +87,7 @@ class RegisterIntoScreen extends StatelessWidget {
               ),
               ElevatedButton(
                   onPressed: () {
+                    registerController.register();
                     Navigator.pop(context);
                     _activateCodeBottomSheet(context, height);
                   },
@@ -120,6 +125,7 @@ class RegisterIntoScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(24),
                 child: TextField(
+                  controller: registerController.activationCodeTextEditingController,
                   onChanged: (value) {
                     if (isEmail(value)) {
                       log('activation code is correct');
@@ -136,11 +142,12 @@ class RegisterIntoScreen extends StatelessWidget {
               ),
               ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(
-                      builder: (context) {
-                        return MyCats();
-                      },
-                    ));
+                    registerController.verify();
+                    // Navigator.pushReplacement(context, MaterialPageRoute(
+                    //   builder: (context) {
+                    //     return MyCats();
+                    //   },
+                    // ));
                   },
                   child: Text(
                     MyTexts.continew,

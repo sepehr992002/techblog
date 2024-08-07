@@ -36,7 +36,10 @@ class BottomNav extends StatelessWidget {
                     width: 30,
                   )),
               IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    //TODO check login status
+                    onBottomNavigationTap(1);
+                  },
                   icon: Image.asset(
                     Assets.icons.write.path,
                     height: 30,
@@ -44,7 +47,7 @@ class BottomNav extends StatelessWidget {
                   )),
               IconButton(
                   onPressed: () {
-                    onBottomNavigationTap(1);
+                    onBottomNavigationTap(2);
                   },
                   icon: Image.asset(
                     Assets.icons.user.path,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/components/my_colors.dart';
+import 'package:tech_blog/view/register/register_into_screen.dart';
 import 'package:tech_blog/view/screens/profile_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../widgets/bottom_navigation.dart';
@@ -52,6 +53,7 @@ class MainScreen extends StatelessWidget {
                 index: selectedIndex.value,
                 children: [
                   HomeScreen(bodyMargin: bodyMargin),
+                   RegisterIntoScreen(),
                   const ProfileScreen(),
                 ],
               ),
