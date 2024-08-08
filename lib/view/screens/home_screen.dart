@@ -3,13 +3,13 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:tech_blog/components/my_texts.dart';
 import 'package:tech_blog/controller/home_screen_controller.dart';
-import 'package:tech_blog/controller/single_article_controller.dart';
-import 'package:tech_blog/view/screens/article_list_screen.dart';
+import 'package:tech_blog/controller/article/single_article_controller.dart';
 import 'package:tech_blog/view/widgets/main_article.dart';
 import 'package:tech_blog/view/widgets/main_podcast.dart';
 import '../../components/fake_data.dart';
 import '../../gen/assets.gen.dart';
 import '../../components/my_colors.dart';
+import '../article/article_list_screen.dart';
 import '../widgets/home_screen_poster.dart';
 import '../widgets/main_tags.dart';
 

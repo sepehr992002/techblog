@@ -29,15 +29,15 @@ class HomeScreenPoster extends StatelessWidget {
           placeholder: (context, url) {
             return Container(
               alignment: Alignment.center,
-              child: SpinKitFadingCube(
-                size: 32,
-                color: MyColors.primaryColor,
-              ),
               width: width / 1.25,
               height: height / 4.2,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   ),
+              child: SpinKitFadingCube(
+                size: 32,
+                color: MyColors.primaryColor,
+              ),
             );
           },
           errorWidget: (context, url, error) {

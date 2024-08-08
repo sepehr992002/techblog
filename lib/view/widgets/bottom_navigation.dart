@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import '../../components/my_colors.dart';
+import '../../controller/register_controller.dart';
 import '../../gen/assets.gen.dart';
 
 class BottomNav extends StatelessWidget {
   final double bodyMargin;
   final Function(int chosenScreen) onBottomNavigationTap;
 
-  const BottomNav(
+
+   BottomNav(
       {super.key,
         required this.bodyMargin,
         required this.onBottomNavigationTap});
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +42,7 @@ class BottomNav extends StatelessWidget {
                   )),
               IconButton(
                   onPressed: () {
-                    //TODO check login status
-                    onBottomNavigationTap(1);
+                    Get.find<RegisterController>().toggleToken();
                   },
                   icon: Image.asset(
                     Assets.icons.write.path,

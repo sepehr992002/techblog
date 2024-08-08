@@ -7,8 +7,8 @@ import 'package:validators/validators.dart';
 import '../../gen/assets.gen.dart';
 import '../../components/my_texts.dart';
 
-class RegisterIntoScreen extends StatelessWidget {
-  RegisterIntoScreen({super.key});
+class ManageArticles extends StatelessWidget {
+  ManageArticles({super.key});
   // RegisterController registerController = Get.put(RegisterController());
   var registerController = Get.find<RegisterController>();
   @override

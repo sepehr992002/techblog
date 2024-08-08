@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import '../components/api_constant.dart';
-import '../model/article_model.dart';
-import '../services/dio_service.dart';
+
+import '../../components/api_constant.dart';
+import '../../model/article_model.dart';
+import '../../services/dio_service.dart';
+
 
 class ListArticleController extends GetxController {
   RxList<ArticleModel> articleList = RxList();
@@ -22,7 +25,7 @@ class ListArticleController extends GetxController {
       for (var element in response.data) {
         articleList.add(ArticleModel.fromJson(element));
       }
-      print(articleList[2].title);
+      debugPrint(articleList[2].title.toString());
       loading.value = false;
     }
   }
@@ -37,7 +40,7 @@ class ListArticleController extends GetxController {
       for (var element in response.data) {
         articleList.add(ArticleModel.fromJson(element));
       }
-      print(articleList[2].title);
+      debugPrint(articleList[2].title.toString());
       loading.value = false;
     }
   }

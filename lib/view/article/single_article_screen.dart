@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
-import 'package:tech_blog/controller/list_article_controller.dart';
-import 'package:tech_blog/view/screens/article_list_screen.dart';
 import '../../components/my_colors.dart';
-import '../../controller/single_article_controller.dart';
+import '../../controller/article/list_article_controller.dart';
+import '../../controller/article/single_article_controller.dart';
 import '../../gen/assets.gen.dart';
 import '../widgets/main_article.dart';
+import 'article_list_screen.dart';
 
 class SingleArticleScreen extends StatelessWidget {
   SingleArticleScreen({super.key});
 
-  SingleArticleController singleArticleController = Get.put(SingleArticleController());
-
+  // SingleArticleController singleArticleController = Get.put(SingleArticleController());
+  var singleArticleController =Get.find<SingleArticleController>();
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -70,6 +70,12 @@ class SingleArticleScreen extends StatelessWidget {
                             left: 0,
                             right: 0,
                             child: Container(
+                              height: 60,
+                              decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                      end: Alignment.bottomCenter,
+                                      begin: Alignment.topCenter,
+                                      colors: GradientColors.singleAppBarGradient)),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
@@ -100,12 +106,6 @@ class SingleArticleScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              height: 60,
-                              decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                      end: Alignment.bottomCenter,
-                                      begin: Alignment.topCenter,
-                                      colors: GradientColors.singleAppBarGradient)),
                             ))
                       ],
                     ),

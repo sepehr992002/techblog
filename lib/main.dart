@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
+import 'package:tech_blog/binding.dart';
 import 'package:tech_blog/components/my_colors.dart';
-import 'package:tech_blog/view/screens/article_list_screen.dart';
+import 'package:tech_blog/view/article/manage_articles.dart';
+import 'package:tech_blog/view/screens/main_screen.dart';
+import 'package:tech_blog/view/article/single_article_screen.dart';
 import 'package:tech_blog/view/screens/splash_screen.dart';
 import 'package:get_storage/get_storage.dart';
 import 'gen/assets.gen.dart';
@@ -28,6 +31,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialBinding: RegisterBinding(),
+        // binding is used for easier access to the controllers we use a lot
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -68,24 +73,23 @@ class MyApp extends StatelessWidget {
                   color: Colors.black, fontFamily: fontFamily, fontSize: 12),
               bodyMedium: TextStyle(
                   color: Colors.white, fontFamily: fontFamily, fontSize: 12)),
-          // This is the theme of your application.
-          //
-          // TRY THIS: Try running your application with "flutter run". You'll see
-          // the application has a purple toolbar. Then, without quitting the app,
-          // try changing the seedColor in the colorScheme below to Colors.green
-          // and then invoke "hot reload" (save your changes or press the "hot
-          // reload" button in a Flutter-supported IDE, or press "r" if you used
-          // the command line to start the app).
-          //
-          // Notice that the counter didn't reset back to zero; the application
-          // state is not lost during the reload. To reset the state, use hot
-          // restart instead.
-          //
-          // This works for code too, not just values: Most code changes can be
-          // tested with just a hot reload.
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
+        getPages: [
+          // routing to pages by their name
+          GetPage(name: NamedRoute.routeMainScreen, page: () => MainScreen(),binding: RegisterBinding()),
+          GetPage(name: NamedRoute.routeSingleArticle, page: () => SingleArticleScreen(),binding: ArticleBinding()),
+        ],
         home: SplashScreen());
   }
+}
+
+
+
+
+
+class NamedRoute{
+  static String routeMainScreen = '/MainScreen';
+  static String routeSingleArticle = '/SingleArticle';
 }

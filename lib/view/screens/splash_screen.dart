@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
 import 'package:tech_blog/components/my_colors.dart';
-import 'package:tech_blog/view/screens/main_screen.dart';
+import 'package:tech_blog/main.dart';
 
 import '../../gen/assets.gen.dart';
 
@@ -19,11 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(const Duration(seconds: 1)).then(
       (value) {
-        Navigator.pushReplacement(context, CupertinoPageRoute(
-          builder: (context) {
-            return MainScreen();
-          },
-        ));
+        Get.offAndToNamed(NamedRoute.routeMainScreen);
       },
     );
   }
@@ -40,8 +36,13 @@ class _SplashScreenState extends State<SplashScreen> {
               Assets.images.logo.path,
               height: 64,
             ),
-            const SizedBox(height: 34,),
-            const SpinKitFadingCube(size: 23,color: MyColors.primaryColor,)
+            const SizedBox(
+              height: 34,
+            ),
+            const SpinKitFadingCube(
+              size: 23,
+              color: MyColors.primaryColor,
+            )
           ],
         ),
       ),

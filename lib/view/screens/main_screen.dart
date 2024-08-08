@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tech_blog/controller/register_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/components/my_colors.dart';
 import 'package:tech_blog/view/register/register_into_screen.dart';
@@ -16,7 +17,7 @@ class MainScreen extends StatelessWidget {
   final Rx<int> selectedIndex = 0.obs;
 
   MainScreen({super.key});
-
+  // when the permanent is false controller will be removes when it is not necessary
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;

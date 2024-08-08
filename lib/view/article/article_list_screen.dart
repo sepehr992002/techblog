@@ -2,8 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:tech_blog/controller/list_article_controller.dart';
-import 'package:tech_blog/controller/single_article_controller.dart';
+import 'package:tech_blog/controller/article/single_article_controller.dart';
+
+import '../../controller/article/list_article_controller.dart';
 
 class ArticleListScreen extends StatelessWidget {
   String title;
@@ -16,7 +17,7 @@ class ArticleListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      appBar: appBar('$title'),
+      appBar: appBar(title),
       body: SizedBox(
         height: double.infinity,
         child: Obx(
@@ -128,10 +129,10 @@ PreferredSize appBar(String title) {
         leading: Padding(
           padding: const EdgeInsets.only(right: 16),
           child: Container(
-            child: Icon(Icons.arrow_right_rounded),
             height: 40,
             width: 40,
             decoration: BoxDecoration(color: Colors.purple, shape: BoxShape.circle),
+            child: Icon(Icons.arrow_right_rounded),
           ),
         ),
       ),

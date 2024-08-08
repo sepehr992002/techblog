@@ -1,7 +1,6 @@
-import 'dart:math';
-
 import 'package:dio/dio.dart';
 import 'package:dio/dio.dart' as dio_service;
+import 'package:flutter/cupertino.dart';
 
 class DioService {
   Dio dio = Dio();
@@ -13,7 +12,11 @@ class DioService {
         // log(response.toString());
         return response;
       },
-    );
+    ).catchError((error){
+      if(error is DioException){
+        return error.response!;
+      }
+    });
   }
 
   Future<dynamic> postMethod(Map<String, dynamic> map, String url) async{
@@ -22,11 +25,15 @@ class DioService {
     return await dio.post(url,data:dio_service.FormData.fromMap(map),options: Options(
       responseType: ResponseType.json,
       method: 'POST',
-    ) ).then((value) {
-      print(value.headers.toString());
-      print(value.data.toString());
-      print(value.statusCode.toString());
-      return value;
-    },);
+    ) ).then((response) {
+      debugPrint(response.headers.toString());
+      debugPrint(response.data.toString());
+      debugPrint(response.statusCode.toString());
+      return response;
+    },).catchError((error){
+      if(error is DioException){
+        return error.response!;
+      }
+    });
   }
 }

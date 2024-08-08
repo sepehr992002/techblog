@@ -1,10 +1,12 @@
 import 'package:get/get.dart';
+import 'package:tech_blog/binding.dart';
+import 'package:tech_blog/main.dart';
 import 'package:tech_blog/model/article_info_model.dart';
 import 'package:tech_blog/model/article_model.dart';
 import 'package:tech_blog/model/tag_model.dart';
-import '../components/api_constant.dart';
-import '../services/dio_service.dart';
-import '../view/screens/single_article_screen.dart';
+import '../../components/api_constant.dart';
+import '../../services/dio_service.dart';
+import '../../view/article/single_article_screen.dart';
 
 class SingleArticleController extends GetxController {
   late RxList<ArticleModel> relatedArticles = RxList();
@@ -32,7 +34,7 @@ class SingleArticleController extends GetxController {
       }
       loading.value = false;
     }
-    Get.to(SingleArticleScreen());
+    Get.toNamed(NamedRoute.routeSingleArticle);
 
   }
 }
