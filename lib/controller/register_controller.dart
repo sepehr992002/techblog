@@ -98,7 +98,7 @@ class RegisterController extends GetxController {
               children: [
                 InkWell(
                   onTap: () {
-                    Get.to(ManageArticles());
+                    Get.toNamed(NamedRoute.routeManageArticles);
                     // debugPrint('write article');
                   },
                   child: Container(

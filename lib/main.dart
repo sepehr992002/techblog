@@ -80,6 +80,7 @@ class MyApp extends StatelessWidget {
           // routing to pages by their name
           GetPage(name: NamedRoute.routeMainScreen, page: () => MainScreen(),binding: RegisterBinding()),
           GetPage(name: NamedRoute.routeSingleArticle, page: () => SingleArticleScreen(),binding: ArticleBinding()),
+          GetPage(name: NamedRoute.routeManageArticles, page: () => ManageArticles(),binding: ArticleManagerBinding()),
         ],
         home: SplashScreen());
   }
@@ -92,4 +93,5 @@ class MyApp extends StatelessWidget {
 class NamedRoute{
   static String routeMainScreen = '/MainScreen';
   static String routeSingleArticle = '/SingleArticle';
+  static String routeManageArticles = '/ManageArticles';
 }
