@@ -128,11 +128,16 @@ PreferredSize appBar(String title) {
         ],
         leading: Padding(
           padding: const EdgeInsets.only(right: 16),
-          child: Container(
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(color: Colors.purple, shape: BoxShape.circle),
-            child: Icon(Icons.arrow_right_rounded),
+          child: GestureDetector(
+            onTap: () {
+              Get.back();
+            },
+            child: Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(color: Colors.purple, shape: BoxShape.circle),
+              child: Icon(Icons.arrow_right_rounded),
+            ),
           ),
         ),
       ),
