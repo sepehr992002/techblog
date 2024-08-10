@@ -25,7 +25,7 @@ class ListArticleController extends GetxController {
       for (var element in response.data) {
         articleList.add(ArticleModel.fromJson(element));
       }
-      debugPrint(articleList[2].title.toString());
+      // debugPrint(articleList[2].title.toString());
       loading.value = false;
     }
   }
@@ -40,7 +40,7 @@ class ListArticleController extends GetxController {
       for (var element in response.data) {
         articleList.add(ArticleModel.fromJson(element));
       }
-      debugPrint(articleList[2].title.toString());
+      // debugPrint(articleList[2].title.toString());
       loading.value = false;
     }
   }

@@ -1,2 +1,8 @@
-String token = 'token';
-String userId = 'userid';
+class StorageKey{
+  static String token = 'token';
+  static String userId = 'userid';
+}
+
+
+
+

@@ -26,9 +26,9 @@ class DioService {
       responseType: ResponseType.json,
       method: 'POST',
     ) ).then((response) {
-      debugPrint(response.headers.toString());
-      debugPrint(response.data.toString());
-      debugPrint(response.statusCode.toString());
+      // debugPrint(response.headers.toString());
+      // debugPrint(response.data.toString());
+      // debugPrint(response.statusCode.toString());
       return response;
     },).catchError((error){
       if(error is DioException){

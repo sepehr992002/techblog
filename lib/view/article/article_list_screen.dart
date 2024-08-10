@@ -21,7 +21,7 @@ class ArticleListScreen extends StatelessWidget {
       body: SizedBox(
         height: double.infinity,
         child: Obx(
-          () => ListView.builder(
+          () => !singleArticleController.loading.value? ListView.builder(
             scrollDirection: Axis.vertical,
             itemCount: listArticleController.articleList.length,
             itemBuilder: (context, index) {
@@ -105,7 +105,7 @@ class ArticleListScreen extends StatelessWidget {
                 ),
               );
             },
-          ),
+          ):SpinKitFadingCube(color: Colors.purple,size: 32,),
         ),
       ),
     ));

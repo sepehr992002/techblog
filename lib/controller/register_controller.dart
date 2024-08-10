@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -24,7 +23,7 @@ class RegisterController extends GetxController {
     var response = await DioService().postMethod(map, ApiConstant.postRegister);
     email = emailTextEditingController.text;
     userId = response.data['user_id'];
-    debugPrint(response.data.toString());
+    // debugPrint(response.data.toString());
   }
 
   verify() async {
@@ -34,16 +33,16 @@ class RegisterController extends GetxController {
       'code': activationCodeTextEditingController.text,
       'command': 'verify'
     };
-    debugPrint(map.toString());
+    // debugPrint(map.toString());
     var response = await DioService().postMethod(map, ApiConstant.postRegister);
-    debugPrint(response.data.toString());
+    // debugPrint(response.data.toString());
     var box = GetStorage();
     var status = response.data['response'];
     switch (status) {
       case 'verified':
-        box.write(token, response.data['token']);
-        box.write(userId, response.data['user_id']);
-        debugPrint("read::::: ${box.read('token')}");
+        box.write(StorageKey.token, response.data['token']);
+        box.write(StorageKey.userId, response.data['user_id']);
+        // debugPrint("read::::: ${box.read('token')}");
         Get.offAll(MainScreen());
       // of all method removes all pages in the stack that are open
       case 'incorrect_code':
@@ -56,7 +55,7 @@ class RegisterController extends GetxController {
   }
 
   toggleToken() {
-    if (GetStorage().read('token') == null) {
+    if (GetStorage().read(StorageKey.token) == null) {
       // Get.to(RegisterIntoScreen());
       routeToWriteBottomSheet();
     } else {
@@ -119,7 +118,7 @@ class RegisterController extends GetxController {
                 ),
                 GestureDetector(
                   onTap: () {
-                    debugPrint('write podcasts');
+                    // debugPrint('write podcasts');
                   },
                   child: Container(
                     color: Colors.transparent,
