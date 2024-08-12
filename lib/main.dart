@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:tech_blog/binding.dart';
 import 'package:tech_blog/components/my_colors.dart';
 import 'package:tech_blog/view/article/manage_articles.dart';
+import 'package:tech_blog/view/article/single_manage_article_screen.dart';
 import 'package:tech_blog/view/screens/main_screen.dart';
 import 'package:tech_blog/view/article/single_article_screen.dart';
 import 'package:tech_blog/view/screens/splash_screen.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialBinding: RegisterBinding(),
+        initialBinding: RegisterBinding(),
         // binding is used for easier access to the controllers we use a lot
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
@@ -78,20 +79,30 @@ class MyApp extends StatelessWidget {
         ),
         getPages: [
           // routing to pages by their name
-          GetPage(name: NamedRoute.routeMainScreen, page: () => MainScreen(),binding: RegisterBinding()),
-          GetPage(name: NamedRoute.routeSingleArticle, page: () => SingleArticleScreen(),binding: ArticleBinding()),
-          GetPage(name: NamedRoute.routeManageArticles, page: () => ManageArticles(),binding: ArticleManagerBinding()),
+          GetPage(
+              name: NamedRoute.routeMainScreen,
+              page: () => MainScreen(),
+              binding: RegisterBinding()),
+          GetPage(
+              name: NamedRoute.routeSingleArticle,
+              page: () => SingleArticleScreen(),
+              binding: ArticleBinding()),
+          GetPage(
+              name: NamedRoute.routeManageArticles,
+              page: () => ManageArticles(),
+              binding: ArticleManagerBinding()),
+          GetPage(
+              name: NamedRoute.singleManageArticle,
+              page: () => SingleManageArticleScreen(),
+              binding: ArticleManagerBinding()),
         ],
         home: SplashScreen());
   }
 }
 
-
-
-
-
-class NamedRoute{
+class NamedRoute {
   static String routeMainScreen = '/MainScreen';
   static String routeSingleArticle = '/SingleArticle';
   static String routeManageArticles = '/ManageArticles';
+  static String singleManageArticle = '/SingleManageArticleScreen';
 }

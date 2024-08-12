@@ -11,30 +11,29 @@ import '../../view/article/single_article_screen.dart';
 class SingleArticleController extends GetxController {
   late RxList<ArticleModel> relatedArticles = RxList();
   late RxList<TagModel> relatedTags = RxList();
-  Rx<ArticleInfoModel> articleInfoModel = ArticleInfoModel().obs;
+  Rx<ArticleInfoModel> articleInfoModel =
+      ArticleInfoModel(null, null, null).obs;
   RxBool loading = false.obs;
 
-
   getArticleInfo(int id) async {
-    articleInfoModel = ArticleInfoModel().obs;
+    articleInfoModel = ArticleInfoModel(null, null, null).obs;
     //TODO setup user id later
     var userId = '';
     loading.value = true;
-    var response = await DioService()
-        .getMethod('${ApiConstant.baseUrl}article/get.php?command=info&id=$id&user_id=$userId');
+    var response = await DioService().getMethod(
+        '${ApiConstant.baseUrl}article/get.php?command=info&id=$id&user_id=$userId');
     if (response.statusCode == 200) {
       articleInfoModel.value = ArticleInfoModel.fromJson(response.data);
       relatedArticles.clear();
-      for(var object in response.data['related']){
+      for (var object in response.data['related']) {
         relatedArticles.add(ArticleModel.fromJson(object));
       }
       relatedTags.clear();
-      for(var value in response.data['tags']){
+      for (var value in response.data['tags']) {
         relatedTags.add(TagModel.fromJson(value));
       }
       loading.value = false;
     }
     Get.toNamed(NamedRoute.routeSingleArticle);
-
   }
 }
